@@ -62,7 +62,7 @@ return [
             'username' => env('DB_USERNAME', 'postgres'),
             'password' => env('DB_PASSWORD', 'postgres'),
             'charset' => 'utf8',
-            'prefix' => '',
+            'prefix' => 'xxx',
             'schema' => 'public',
             'sslmode' => 'prefer',
         ],
