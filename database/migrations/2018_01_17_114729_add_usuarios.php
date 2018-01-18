@@ -30,6 +30,22 @@ class AddUsuarios extends Migration
             $table->integer('updated_by')->nullable();
             $table->integer('deleted_by')->nullable();
         });
+        
+        // Insert some stuff
+    DB::table('usuarios')->insert(
+        array(
+            'dependencia_id' => 1,
+            'rol_id' => 1,
+            'Nombre' => 'Master',
+            'Paterno' => 'Desarrollo',
+            'Materno' => 'Desarrollo',
+            'RFC' => 'ABCD123456789',
+            'Password' => md5('123'),
+            'Estatus' => 1,
+            'created_by' => 1,
+            'created_at' => date('Y-m-d H:i:s')
+        )
+    );
     }
 
     /**
