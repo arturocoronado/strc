@@ -20,7 +20,7 @@
     });
 </script>
 
-<form id ="puesto-form" action="{{route('catalogos.dependencias.save', $puesto)}}">
+<form id ="dependencia-form" action="{{route('catalogos.dependencias.save', $dependencia)}}">
     <div class="form-group">
         <label>Dependencia</label>
         <input type="text" class="form-control" name="Dependencia" placeholder="Nombre de la dependencia" value="{{$dependencia ? $dependencia->Dependencia : ""}}" required="">
