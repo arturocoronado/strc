@@ -11,12 +11,10 @@ and open the template in the editor.
         <meta name="csrf-token" content="{{ Session::token() }}"> 
         
         <title>Declaranet PLUS Guanajuato</title>
-        
+        <link rel="shortcut icon" href="img/favicon.ico" >
         <link type="text/css" rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
         
-        
         @if(auth()->check())
-        
         
         <link type="text/css" rel="stylesheet" href="{{asset('css/menu/plugins.css')}}">
         <link type="text/css" rel="stylesheet" href="{{asset('css/menu/style.css')}}">
