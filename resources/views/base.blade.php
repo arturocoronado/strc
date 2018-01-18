@@ -76,7 +76,7 @@ and open the template in the editor.
                     headers: {'X-CSRF-Token': $('meta[name=csrf-token]').attr('content')}
                 });
                 
-                $('.main-nav').find('a[href="/{{Request::path()}}"]').parents('li.has-child').addClass('active');
+                $('.main-nav').find('a[href="{{Request::url()}}"]').parents('li.has-child').addClass('active');
             });
         </script>
         

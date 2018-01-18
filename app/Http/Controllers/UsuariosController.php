@@ -18,6 +18,8 @@ class UsuariosController extends Controller
         $params[] = array("Header" => "Correo", "Width" => "*", "Attach" => "txt", "Align" => "left", "Sort" => "str", "Type" => "ed");
         $params[] = array("Header" => "Estatus", "Width" => "150", "Attach" => "txt", "Align" => "left", "Sort" => "str", "Type" => "ed");
         
+//        dd($request->url());
+        
         return view('usuarios.usu_index')
                 ->with('params', $params);
                 
