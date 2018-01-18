@@ -13,7 +13,8 @@ class Testing extends Migration
      */
     public function up()
     {
-        //
+        //christian 
+//        mas mamadas
     }
 
     /**
@@ -26,3 +27,4 @@ class Testing extends Migration
         //
     }
 }
+"*saquen las cawamas*"
