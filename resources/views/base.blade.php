@@ -40,7 +40,9 @@ and open the template in the editor.
                 background-repeat: no-repeat;
                 background-image: linear-gradient(#27ACDD, #84BA55);
             }
-            #main-content {margin-top: 100px;}
+            #main-title {margin-top: 100px;}
+            #main-content {min-height: 300px; border-radius: 5px; padding: 10px; background: whitesmoke; border: 2px solid #1E6291;}
+            
             .RowCount {padding:  10px; }
             .fa {cursor: pointer;}
             .fa-trash-o {color: red;}
@@ -104,9 +106,9 @@ and open the template in the editor.
                 </div>
             </div>
             
+            <h2 id ="main-title" class="text-center"><span class="label label-success"> @yield('title', 'Inicio') </span></h2><hr>
+            
             <div class="container" id ="main-content">
-                
-                <h2 class="text-center"><span class="label label-success"> @yield('title', 'Inicio') </span></h2><hr>
                 @yield ('content')
             </div>
             
