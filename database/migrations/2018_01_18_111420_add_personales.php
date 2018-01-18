@@ -24,7 +24,6 @@ class AddPersonales extends Migration
             $table->integer('ciudad_id');
             $table->string('Telefono')->nullable();
             $table->string('Civil')->nullable();
-            $table->string('CURP')->nullable();
             $table->string('ID')->nullable();
             $table->string('Clave')->nullable();
             $table->timestamps();
