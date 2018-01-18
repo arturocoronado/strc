@@ -145,7 +145,7 @@
     
     function setGrid($grid, $params, $paging = false, $multiline = false){
         $html = $grid . " = new dhtmlXGridObject('" . $grid . "');"
-            . $grid . ".setImagePath('js/dhtmlx/imgs/');"
+            . $grid . ".setImagePath('".URL::asset('js/dhtmlx/imgs')."/');"
             . $grid . ".enableSmartRendering(true);"
             . $grid . ".setSkin('dhx_skyblue');"
             . $grid . ".setHeader('" . DisplayGrid($params, "Header") . "',null,[" . styleHeaderGrid(count($params)) . "]);"
