@@ -39,6 +39,14 @@ Route::group(['prefix' => 'catalogos'], function(){
    Route::get('puestos/form/{puesto?}', 'PuestosController@form')->name('catalogos.puestos.form');
    Route::post('puestos/save/{puesto?}', 'PuestosController@save')->name('catalogos.puestos.save');
    Route::get('puestos/delete/{puesto}', 'PuestosController@delete')->name('catalogos.puestos.delete');
+   
+   Route::get('dependencias', 'DependenciasController@index')->name('catalogos.dependencias.index');
+   Route::get('dependencias/data', 'DependenciasController@data')->name('catalogos.dependencias.data');
+   Route::get('dependencias/form/{dependencia?}', 'DependenciasController@form')->name('catalogos.dependencias.form');
+   Route::post('dependencias/save/{dependencia?}', 'DependenciasController@save')->name('catalogos.dependencias.save');
+   Route::get('dependencias/delete/{dependencia}', 'DependenciasController@delete')->name('catalogos.dependencia.delete');
+
+   
 });
 
 
