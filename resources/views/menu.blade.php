@@ -4,7 +4,7 @@
                 <!-- Start logo -->
                 <div class="col-sm-2 col-xs-4">
                     <div id="logo" class="logos">
-                        <a href="{{url('/" class="standard-logo pull-left">
+                        <a href="{{url('/')}}" class="standard-logo pull-left">
                             <img class="logo" src="{{asset('css/img/logo.png')}}" width ="70" height="60" alt="logo">
                         </a>
                     </div>
