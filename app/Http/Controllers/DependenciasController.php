@@ -30,7 +30,7 @@ class DependenciasController extends Controller
         
         foreach($dependencias as $d => $p){
             print "<row id = '$p->id'>";
-            print "<cell>" . ($i+1) . "</cell>";
+            print "<cell>" . ($d+1) . "</cell>";
             print "<cell>" . htmlspecialchars('<i class="fa fa-2x fa-search-plus" onclick="View(' . $p->id . ')"></i>') . "</cell>";
             print "<cell>" . htmlspecialchars('<i class="fa fa-2x fa-trash-o" onclick="Delete(' . $p->id . ')"></i>') . "</cell>";
             print "<cell>$p->Dependencia</cell>";
@@ -54,8 +54,8 @@ class DependenciasController extends Controller
         
         
         $r->validate([
-            'Dependencia'    => 'required|min:10|unique:dependencias,Dependencia,id', 
-            'Siglas'    => 'required|numeric', 
+            'Dependencia'    => 'required', 
+            'Siglas'    => 'required|alpha', 
         ]);
         
         
