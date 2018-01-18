@@ -26,25 +26,24 @@ class UsuariosController extends Controller
     public function data(Request $req) {
         $users = Usuario::all();
         
-        header("Content-type: text/xml");
-    
-        print  "<?xml version='1.0' encoding='UTF-8'?>\n";
-        print  "<rows pos='0'>";
+        $content=  "<?xml version='1.0' encoding='UTF-8'?>\n";
+        $content.=  "<rows pos='0'>";
         
         
         foreach($users as $i => $u){
-            print "<row id = '$u->id'>";
-            print "<cell>" . ($i+1) . "</cell>";
-            print "<cell>" . htmlspecialchars('<i class="fa fa-2x fa-search-plus" onclick="View(' . $u->id . ')"></i>') . "</cell>";
-            print "<cell>" . htmlspecialchars('<i class="fa fa-2x fa-trash-o" onclick="Delete(' . $u->id . ')"></i>') . "</cell>";
-            print "<cell>$u->Nombre</cell>";
-            print "<cell>$u->RFC</cell>";
-            print "<cell>$u->Correo</cell>";
-            print "<cell>$u->Estatus</cell>";
-            print "</row>";
+            $content.= "<row id = '$u->id'>";
+            $content.= "<cell>" . ($i+1) . "</cell>";
+            $content.= "<cell>" .htmlspecialchars("<i class='fa fa-2x fa-search-plus' onclick='View(" . $u->id . ")'></i>"). "</cell>";
+            $content.= "<cell>" .htmlspecialchars("<i class='fa fa-2x fa-trash-o' onclick='Delete(" . $u->id . ")'></i>"). "</cell>";
+            $content.= "<cell>" .htmlspecialchars($u->Nombre)."</cell>";
+            $content.= "<cell>" .htmlspecialchars($u->RFC)."</cell>";
+            $content.= "<cell>" .htmlspecialchars($u->Correo)."</cell>";
+            $content.= "<cell>" .htmlspecialchars($u->Estatus)."</cell>";
+            $content.= "</row>";
         }
             
-        print  "</rows>";
+        $content.=  "</rows>";
+        return response($content)->header('Content-Type', 'text/xml');
     }
     
     public function view(Request $req, $user = null) {
