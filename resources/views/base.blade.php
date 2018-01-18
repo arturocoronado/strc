@@ -11,7 +11,7 @@ and open the template in the editor.
         <meta name="csrf-token" content="{{ Session::token() }}"> 
         
         <title>Declaranet PLUS Guanajuato</title>
-        <link rel="shortcut icon" href="img/favicon.ico" >
+        <link rel="shortcut icon" href="{{asset('favicon.ico')}}" >
         <link type="text/css" rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
         
         
