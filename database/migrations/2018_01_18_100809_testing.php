@@ -13,7 +13,7 @@ class Testing extends Migration
      */
     public function up()
     {
-        //christian 
+        //christian baltazar 
 //        mas mamadas
     }
 
