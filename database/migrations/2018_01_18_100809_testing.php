@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
+//JOrge Macias
 class Testing extends Migration
 {
     /**
@@ -13,7 +13,7 @@ class Testing extends Migration
      */
     public function up()
     {
-        //christian 
+        //christian baltazar naasdadsadasd
 //        mas mamadas
     }
 
@@ -27,3 +27,7 @@ class Testing extends Migration
         //
     }
 }
+
+"*saquen las cawamas*"
+
+/*tambien unos tacos*/
