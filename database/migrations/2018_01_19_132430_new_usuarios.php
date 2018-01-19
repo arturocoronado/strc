@@ -24,6 +24,10 @@ class NewUsuarios extends Migration
             $table->string('Materno');
             $table->string('RFC', 13);
             $table->string('CURP', 20)->nullable();
+            $table->string('Nacionalidad', 50)->nullable();
+            $table->date('Nacimiento')->nullable();
+            $table->string('Lugar_nacimiento')->nullable();
+            
             $table->string('Correo');
             $table->string('Correo_alterno')->nullable();
             $table->string('Password');

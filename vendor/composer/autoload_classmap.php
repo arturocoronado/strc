@@ -7,7 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
-    'App\\Dependencia' => $baseDir . '/app/Dependencia.php',
+    'App\\Ente' => $baseDir . '/app/Ente.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Fraccion' => $baseDir . '/app/Fraccion.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -15,7 +15,7 @@ return array(
     'App\\Http\\Controllers\\Auth\\RegisterController' => $baseDir . '/app/Http/Controllers/Auth/RegisterController.php',
     'App\\Http\\Controllers\\Auth\\ResetPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ResetPasswordController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
-    'App\\Http\\Controllers\\DependenciasController' => $baseDir . '/app/Http/Controllers/DependenciasController.php',
+    'App\\Http\\Controllers\\EntesController' => $baseDir . '/app/Http/Controllers/EntesController.php',
     'App\\Http\\Controllers\\FraccionesController' => $baseDir . '/app/Http/Controllers/FraccionesController.php',
     'App\\Http\\Controllers\\LoginController' => $baseDir . '/app/Http/Controllers/LoginController.php',
     'App\\Http\\Controllers\\PuestosController' => $baseDir . '/app/Http/Controllers/PuestosController.php',
