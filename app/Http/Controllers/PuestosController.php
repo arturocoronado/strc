@@ -54,18 +54,18 @@ class PuestosController extends Controller
         
         
         $r->validate([
-            'Puesto'    => 'required|min:10', 
+            'Puesto'    => 'required|max:255', 
             'Nivel'    => 'required', 
         ]);
         
         
-//        $p = Puesto::updateOrCreate(['id' => $puesto?$puesto:0], $r->all());
+        $p = Puesto::updateOrCreate(['id'=>($puesto?$puesto:0)], $r->all());
         
-        $puesto = new Puesto();
-        $puesto->Puesto = $r->Puesto;
-        $puesto->Nivel = $r->Nivel;
-        
-        $puesto->save();
+//        $puesto = new Puesto();
+//        $puesto->Puesto = $r->Puesto;
+//        $puesto->Nivel = $r->Nivel;
+//        
+//        $puesto->save();
         
     }
     

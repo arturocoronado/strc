@@ -13,12 +13,9 @@ class Puesto extends Model
     
 //Nombre definitivo de la tabla que afecta el modelo     
     protected $table = "puestos";
-    
-//    Campos que se pueden afectar an la tabla
-//    protected $fillable = array('Nombre, Correo, Password, Estatus');
 
 //    Campos restringidos en la tabla 
-    protected $guarded = [];
+    protected $guarded = ['id'];
     
     // Bandera de borrado en las tablas cuando se usa softDeletes 
     protected $dates = ['deleted_at'];
