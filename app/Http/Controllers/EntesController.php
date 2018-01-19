@@ -36,8 +36,8 @@ class EntesController extends Controller
             print "<cell>" . htmlspecialchars('<i class="fa fa-2x fa-search-plus" onclick="View(' . $p->id . ')"></i>') . "</cell>";
             print "<cell>" . htmlspecialchars('<i class="fa fa-2x fa-trash-o" onclick="Delete(' . $p->id . ')"></i>') . "</cell>";
             print "<cell>$p->Ente</cell>";
-            print "<cell>$p->Tipo</cell>";
             print "<cell>$p->Siglas</cell>";
+            print "<cell>$p->Tipo</cell>";
             print "</row>";
         }
             

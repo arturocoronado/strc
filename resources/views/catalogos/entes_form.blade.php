@@ -31,7 +31,13 @@
     </div>
     <div class="form-group">
         <label>Tipo</label>
-        <input type="text" class="form-control" name="Tipo" placeholder="Tipo" value="{{$ente ? $ente->Tipo : ""}}" required="">
+
+      <select class="select2 require" id="cmbType" name="Tipo" style="width: 150px">
+          <option value ="Centralizada" {{ $ente['Tipo']=="Centralizada" ? "selected" : "" }}>Centralizada</option>
+            <option value ="Paraestatal" {{ $ente['Tipo']=="Paraestatal" ? "selected" : "" }}>Paraestatal</option>
+            <option value ="Municipio" {{ $ente['Tipo']=="Municipio" ? "selected" : "" }} >Municipio</option>
+      </select>
+        
     </div>
     
     
