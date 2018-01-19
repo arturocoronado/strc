@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Wildside\Userstamps\Userstamps;
 
-class Dependencia extends Model
+class Ente extends Model
 {
     use SoftDeletes;
     use Userstamps;
     
 //Nombre definitivo de la tabla que afecta el modelo     
-    protected $table = "dependencias";
+    protected $table = "entes";
 
 //    Campos que se pueden afectar an la tabla
 //    protected $fillable = array('Nombre, Correo, Password, Estatus');
@@ -25,6 +25,6 @@ class Dependencia extends Model
 //    Relaciones con otros modelo 
     
     public function usuarios() {
-        return $this->hasMany('App\Usuario', 'id', 'dependencia_id');
+        return $this->hasMany('App\Usuario', 'id', 'ente_id');
     }
 }

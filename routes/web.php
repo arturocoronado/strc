@@ -40,11 +40,11 @@ Route::group(['prefix' => 'catalogos'], function(){
    Route::post('puestos/save/{puesto?}', 'PuestosController@save')->name('catalogos.puestos.save');
    Route::get('puestos/delete/{puesto}', 'PuestosController@delete')->name('catalogos.puestos.delete');
    
-   Route::get('dependencias', 'DependenciasController@index')->name('catalogos.dependencias.index');
-   Route::get('dependencias/data', 'DependenciasController@data')->name('catalogos.dependencias.data');
-   Route::get('dependencias/form/{dependencia?}', 'DependenciasController@form')->name('catalogos.dependencias.form');
-   Route::post('dependencias/save/{dependencia?}', 'DependenciasController@save')->name('catalogos.dependencias.save');
-   Route::get('dependencias/delete/{dependencia}', 'DependenciasController@delete')->name('catalogos.dependencia.delete');
+   Route::get('entes', 'EntesController@index')->name('catalogos.entes.index');
+   Route::get('entes/data', 'EntesController@data')->name('catalogos.entes.data');
+   Route::get('entes/form/{ente?}', 'EntesController@form')->name('catalogos.entes.form');
+   Route::post('entes/save/{ente?}', 'EntesController@save')->name('catalogos.entes.save');
+   Route::get('entes/delete/{ente}', 'EntesController@delete')->name('catalogos.entes.delete');
    
    Route::get('fracciones', 'FraccionesController@index')->name('catalogos.fracciones.index');
    Route::get('fracciones/data', 'FraccionesController@data')->name('catalogos.fracciones.data');
