@@ -59,7 +59,7 @@ class PuestosController extends Controller
         ]);
         
         
-        $p = Puesto::updateOrCreate(['id'=>($puesto?$puesto:0)], $r->all());
+        $p = Puesto::updateOrCreate(['id'=> $puesto], $r->all());
         
 
     }
