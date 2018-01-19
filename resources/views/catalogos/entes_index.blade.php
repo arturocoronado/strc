@@ -1,7 +1,7 @@
 
 @extends('base')
 
-@section('title', 'Catálogos de dependencias')
+@section('title', 'Catálogos de entes')
 
 @section('style')
 
@@ -19,26 +19,26 @@
     
         {!! setGrid("grid", $params, true) !!}
         
-        ReloadGrid(grid, '/catalogos/dependencias/data');
+        ReloadGrid(grid, '/catalogos/entes/data');
          
         $('#btnNew').click(function(){
            
-           Modal('/catalogos/dependencias/form', 'Dependencia', 600);
+           Modal('/catalogos/entes/form', 'Ente', 600);
            
         });
     });
     
     function View(id){
-        Modal('/catalogos/dependencias/form/' + id, 'Dependencia', 600);
+        Modal('/catalogos/entes/form/' + id, 'Ente', 600);
     }
     
     function Delete(id){
         Question("¿Desea borrar?", function(){
            Loading();
-           $.get('/catalogos/dependencias/delete/' + id, function(data){
+           $.get('/catalogos/entes/delete/' + id, function(data){
               Ready();
               OK("Borrado");
-              ReloadGrid(grid, '/catalogos/dependencias/data');
+              ReloadGrid(grid, '/catalogos/entes/data');
            });
         });
     }
