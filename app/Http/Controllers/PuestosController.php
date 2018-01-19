@@ -61,16 +61,10 @@ class PuestosController extends Controller
         
         $p = Puesto::updateOrCreate(['id'=>($puesto?$puesto:0)], $r->all());
         
-//        $puesto = new Puesto();
-//        $puesto->Puesto = $r->Puesto;
-//        $puesto->Nivel = $r->Nivel;
-//        
-//        $puesto->save();
-        
+
     }
     
     public function delete($puesto) {
-        $p = Puesto::find($puesto);
-        $p->delete();
+        Puesto::find($puesto)->delete();
     }
 }
