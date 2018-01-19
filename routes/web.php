@@ -45,6 +45,12 @@ Route::group(['prefix' => 'catalogos'], function(){
    Route::get('dependencias/form/{dependencia?}', 'DependenciasController@form')->name('catalogos.dependencias.form');
    Route::post('dependencias/save/{dependencia?}', 'DependenciasController@save')->name('catalogos.dependencias.save');
    Route::get('dependencias/delete/{dependencia}', 'DependenciasController@delete')->name('catalogos.dependencia.delete');
+   
+   Route::get('fracciones', 'FraccionesController@index')->name('catalogos.fracciones.index');
+   Route::get('fracciones/data', 'FraccionesController@data')->name('catalogos.fracciones.data');
+   Route::get('fracciones/form/{fraccion?}', 'FraccionesController@form')->name('catalogos.fracciones.form');
+   Route::post('fracciones/save/{fraccion?}', 'FraccionesController@save')->name('catalogos.fracciones.save');
+   Route::get('fracciones/delete/{fraccion}', 'FraccionesController@delete')->name('catalogos.fracciones.delete');
 
    
 });
