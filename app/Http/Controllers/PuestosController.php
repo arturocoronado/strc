@@ -16,8 +16,7 @@ class PuestosController extends Controller
         
         
         return view('catalogos.puestos_index')
-                ->with('params', $params)
-                ->with('variable', 1);
+                ->with('params', $params);
     }
     
     public function data() {
@@ -59,7 +58,7 @@ class PuestosController extends Controller
         ]);
         
         
-        $p = Puesto::updateOrCreate(['id'=> $puesto], $r->all());
+        Puesto::updateOrCreate(['id'=> $puesto], $r->all());
         
 
     }

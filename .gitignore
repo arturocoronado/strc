@@ -3,6 +3,7 @@ nbproject/
 build/
 nbbuild/
 dist/
+storage/
 nbdist/
 nbactions.xml
 nb-configuration.xml
