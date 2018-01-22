@@ -31,7 +31,7 @@ class ParametrosController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function data(Request $request) {
-        $parametros = Parametro::all()->orderBy('orden', 'asc');
+        $parametros = Parametro::orderBy('Orden', 'asc')->get();
 
         $content = "<?xml version='1.0' encoding='UTF-8'?>\n";
         $content .= "<rows pos='0'>";
