@@ -20,7 +20,7 @@
                                     <div class="dropdown left-indent">
                                         <ul class="dropdown-items">
                                             <li>
-                                                <a href="{{url('/catalogos/dependencias')}}">Dependencias</a>
+                                                <a href="{{url('/catalogos/entes')}}">Entes</a>
                                             </li>
                                             <li>
                                                 <a href="{{url('/catalogos/puestos')}}">Puestos</a>
@@ -84,9 +84,11 @@
                                     <div class="dropdown left-indent">
                                         <ul class="dropdown-items">
                                             <li>
-                                                <a href="{{url('/opciones')}}">Configuración</a>
+                                                <a href="{{url('/config/opciones')}}">Configuración</a>
                                             </li>
-                                            
+                                            <li>
+                                                <a href="{{url('/config/calendario')}}">Calendario</a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </li>

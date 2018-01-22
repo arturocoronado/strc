@@ -16,8 +16,7 @@ class PuestosController extends Controller
         
         
         return view('catalogos.puestos_index')
-                ->with('params', $params)
-                ->with('variable', 1);
+                ->with('params', $params);
     }
     
     public function data() {
@@ -54,23 +53,17 @@ class PuestosController extends Controller
         
         
         $r->validate([
-            'Puesto'    => 'required|min:10', 
+            'Puesto'    => 'required|max:255', 
             'Nivel'    => 'required', 
         ]);
         
         
-//        $p = Puesto::updateOrCreate(['id' => $puesto?$puesto:0], $r->all());
+        Puesto::updateOrCreate(['id'=> $puesto], $r->all());
         
-        $puesto = new Puesto();
-        $puesto->Puesto = $r->Puesto;
-        $puesto->Nivel = $r->Nivel;
-        
-        $puesto->save();
-        
+
     }
     
     public function delete($puesto) {
-        $p = Puesto::find($puesto);
-        $p->delete();
+        Puesto::find($puesto)->delete();
     }
 }

@@ -7,6 +7,7 @@
             LoadButton($('#btnSave'));
             $.post($(this).attr('action'), $(this).serialize(), function(data){
                 Ready();
+                if(data) Error(data);
                 OK("Guardado");
                 CloseModal();
                 ReloadGrid(grid, '/catalogos/puestos/data');

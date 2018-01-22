@@ -1,7 +1,7 @@
 
 <script>
     $(function(){
-        $('#dependencia-form').submit(function(e){
+        $('#fraccion-form').submit(function(e){
             e.preventDefault();
             
             LoadButton($('#btnSave'));
@@ -9,7 +9,7 @@
                 Ready();
                 OK("Guardado");
                 CloseModal();
-                ReloadGrid(grid, '/catalogos/dependencias/data');
+                ReloadGrid(grid, '/catalogos/fracciones/data');
             }).fail(function(err){
                Ready(); 
                Error(DisplayErrors(err));
@@ -20,14 +20,14 @@
     });
 </script>
 
-<form id ="dependencia-form" action="{{route('catalogos.dependencias.save', $dependencia)}}">
+<form id ="fraccion-form" action="{{route('catalogos.fracciones.save', $fraccion)}}">
     <div class="form-group">
-        <label>Dependencia</label>
-        <input type="text" class="form-control" name="Dependencia" placeholder="Nombre de la dependencia" value="{{$dependencia ? $dependencia->Dependencia : ""}}" required="">
+        <label>Fracción</label>
+        <input type="text" class="form-control" name="Fraccion" placeholder="Fracción" value="{{$fraccion ? $fraccion->Fraccion : ""}}" required="">
     </div>
     <div class="form-group">
-        <label>Siglas</label>
-        <input type="text" class="form-control" name="Siglas" placeholder="Siglas" value="{{$dependencia ? $dependencia->Siglas : ""}}" required="">
+        <label>Descripción</label>
+        <input type="text" class="form-control" name="Descripcion" placeholder="Descripción" value="{{$fraccion ? $fraccion->Descripcion : ""}}" required="">
     </div>
     <p><button type="submit" class="btn btn-success btn-lg" id ="btnSave"><i class="fa fa-save"></i> Guardar</button></p>
 </form>

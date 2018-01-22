@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddDependencias extends Migration
+class NewFunciones extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,12 @@ class AddDependencias extends Migration
      */
     public function up()
     {
-        Schema::create('dependencias', function (Blueprint $table) {
-//            Aqui va todo lo de la tabla 
-            
+        Schema::create('funciones', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('Dependencia');
-            $table->string('Siglas')->nullable();
+            $table->string('Funcion');
             
-            $table->timestamps(); // Aqui se crean las 2 primeras bandera 
-            $table->softDeletes(); // Aqui va la tercer bandera
-            
-//            Aqui van las banderas para los usuarios que afectan 
+            $table->timestamps();
+            $table->softDeletes();
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();
             $table->integer('deleted_by')->nullable();
@@ -37,6 +32,6 @@ class AddDependencias extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dependencias');
+        Schema::dropIfExists('funciones');
     }
 }
