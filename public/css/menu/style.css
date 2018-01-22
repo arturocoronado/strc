@@ -799,7 +799,7 @@ blockquote {
 .main-nav>ul>li.current>a{ opacity: 1; }
 .main-nav>ul>li.current>a:before{ width: 50%; }
 .main-nav>ul>li{
-    margin-left: 40px;
+    margin-left: 20px;
     position: relative;
 }
 .main-nav>ul>li:first-child{ margin-left: 0; }
