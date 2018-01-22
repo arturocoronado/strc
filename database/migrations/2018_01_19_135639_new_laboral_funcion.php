@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddPuestos extends Migration
+class NewLaboralFuncion extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class AddPuestos extends Migration
      */
     public function up()
     {
-        Schema::create('puestos', function (Blueprint $table) {
+        Schema::create('laborales_funciones', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->integer('laboral_id');
+            $table->integer('funcion_id');
         });
     }
 
@@ -26,6 +27,6 @@ class AddPuestos extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('puestos');
+        Schema::dropIfExists('laborales_funciones');
     }
 }

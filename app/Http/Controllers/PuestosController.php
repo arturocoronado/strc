@@ -12,12 +12,11 @@ class PuestosController extends Controller
         $params[] = array("Header" => "Ver", "Width" => "40", "Attach" => "", "Align" => "center", "Sort" => "int", "Type" => "ro");
         $params[] = array("Header" => "Borrar", "Width" => "50", "Attach" => "", "Align" => "center", "Sort" => "int", "Type" => "ed");
         $params[] = array("Header" => "Puesto", "Width" => "*", "Attach" => "txt", "Align" => "left", "Sort" => "str", "Type" => "ed");
-        $params[] = array("Header" => "Nivel", "Width" => "100", "Attach" => "txt", "Align" => "left", "Sort" => "str", "Type" => "ed");
+        $params[] = array("Header" => "Nivel", "Width" => "100", "Attach" => "txt", "Align" => "center", "Sort" => "str", "Type" => "ed");
         
         
         return view('catalogos.puestos_index')
-                ->with('params', $params)
-                ->with('variable', 1);
+                ->with('params', $params);
     }
     
     public function data() {
@@ -54,20 +53,17 @@ class PuestosController extends Controller
         
         
         $r->validate([
-            'Puesto'    => 'required|min:10|unique:puestos,Puesto,id', 
-            'Nivel'    => 'required|numeric', 
+            'Puesto'    => 'required|max:255', 
+            'Nivel'    => 'required', 
         ]);
         
         
-        $p = Puesto::updateOrCreate(['id' => $puesto?$puesto:0], $r->all());
+        Puesto::updateOrCreate(['id'=> $puesto], $r->all());
         
-//        $puesto = new Puesto($r->all());
-//        $puesto->save();
-        
+
     }
     
     public function delete($puesto) {
-        $p = Puesto::find($puesto);
-        $p->delete();
+        Puesto::find($puesto)->delete();
     }
 }

@@ -341,13 +341,16 @@ class ComposerStaticInit91cb942192570a1dfd5af85db99f589f
 
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
-        'App\\Dependencia' => __DIR__ . '/../..' . '/app/Dependencia.php',
+        'App\\Ente' => __DIR__ . '/../..' . '/app/Ente.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Fraccion' => __DIR__ . '/../..' . '/app/Fraccion.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\EntesController' => __DIR__ . '/../..' . '/app/Http/Controllers/EntesController.php',
+        'App\\Http\\Controllers\\FraccionesController' => __DIR__ . '/../..' . '/app/Http/Controllers/FraccionesController.php',
         'App\\Http\\Controllers\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/LoginController.php',
         'App\\Http\\Controllers\\PuestosController' => __DIR__ . '/../..' . '/app/Http/Controllers/PuestosController.php',
         'App\\Http\\Controllers\\UsuariosController' => __DIR__ . '/../..' . '/app/Http/Controllers/UsuariosController.php',

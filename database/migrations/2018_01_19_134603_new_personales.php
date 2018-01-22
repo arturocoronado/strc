@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddPersonales extends Migration
+class NewPersonales extends Migration
 {
     /**
      * Run the migrations.
@@ -13,6 +13,8 @@ class AddPersonales extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('personales');
+        
         Schema::create('personales', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('usuario_id');
@@ -24,6 +26,7 @@ class AddPersonales extends Migration
             $table->integer('ciudad_id');
             $table->string('Telefono')->nullable();
             $table->string('Civil')->nullable();
+            $table->string('Regimen')->nullable();
             $table->string('ID')->nullable();
             $table->string('Clave')->nullable();
             $table->timestamps();

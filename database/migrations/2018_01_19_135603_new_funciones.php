@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddFracciones extends Migration
+class NewFunciones extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class AddFracciones extends Migration
      */
     public function up()
     {
-        Schema::create('fracciones', function (Blueprint $table) {
+        Schema::create('funciones', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('Fraccion');
-            $table->text('Descripcion')->nullable();
+            $table->string('Funcion');
+            
             $table->timestamps();
             $table->softDeletes();
             $table->integer('created_by')->nullable();
@@ -32,6 +32,6 @@ class AddFracciones extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fracciones');
+        Schema::dropIfExists('funciones');
     }
 }

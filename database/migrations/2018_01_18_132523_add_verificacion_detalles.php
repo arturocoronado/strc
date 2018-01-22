@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddPersonales extends Migration
+class AddVerificacionDetalles extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,13 @@ class AddPersonales extends Migration
      */
     public function up()
     {
-        Schema::create('personales', function (Blueprint $table) {
+        Schema::create('verificacion_detalles', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('usuario_id');
-            $table->string('Calle');
-            $table->string('NumeroExt', 50);
-            $table->string('NumeroInt', 50);
-            $table->string('Colonia');
-            $table->integer('CP')->nullable();
-            $table->integer('ciudad_id');
-            $table->string('Telefono')->nullable();
-            $table->string('Civil')->nullable();
-            $table->string('ID')->nullable();
-            $table->string('Clave')->nullable();
+            $table->integer('verificacion_id');
+            $table->integer('trans_id');
+            $table->tinyInteger('Estatus');
+            $table->text('Comentarios')->nullable();
+            $table->text('Observaciones')->nullable();
             $table->timestamps();
             $table->softDeletes();
             $table->integer('created_by')->nullable();
@@ -41,6 +35,6 @@ class AddPersonales extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('personales');
+        Schema::dropIfExists('verificacion_detalles');
     }
 }

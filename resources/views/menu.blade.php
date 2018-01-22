@@ -4,7 +4,7 @@
                 <!-- Start logo -->
                 <div class="col-sm-2 col-xs-4">
                     <div id="logo" class="logos">
-                        <a href="/" class="standard-logo pull-left">
+                        <a href="{{url('/')}}" class="standard-logo pull-left">
                             <img class="logo" src="{{asset('css/img/logo.png')}}" width ="70" height="60" alt="logo">
                         </a>
                     </div>
@@ -20,13 +20,13 @@
                                     <div class="dropdown left-indent">
                                         <ul class="dropdown-items">
                                             <li>
-                                                <a href="/catalogos/dependencias">Dependencias</a>
+                                                <a href="{{url('/catalogos/entes')}}">Entes</a>
                                             </li>
                                             <li>
-                                                <a href="/catalogos/puestos">Puestos</a>
+                                                <a href="{{url('/catalogos/puestos')}}">Puestos</a>
                                             </li>
                                             <li>
-                                                <a href="/catalogos/fracciones">Fracciones</a>
+                                                <a href="{{url('/catalogos/fracciones')}}">Fracciones</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -36,13 +36,13 @@
                                     <div class="dropdown left-indent">
                                         <ul class="dropdown-items">
                                             <li>
-                                                <a href="/padron/alta">Altas</a>
+                                                <a href="{{url('/padron/alta')}}">Altas</a>
                                             </li>
                                             <li>
-                                                <a href="/padron/movimientos">Movimientos</a>
+                                                <a href="{{url('/padron/movimientos')}}">Movimientos</a>
                                             </li>
                                             <li>
-                                                <a href="/padron/recordatorios">Recordatorios</a>
+                                                <a href="{{url('/padron/recordatorios')}}">Recordatorios</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -52,16 +52,16 @@
                                     <div class="dropdown left-indent">
                                         <ul class="dropdown-items">
                                             <li>
-                                                <a href="/verificacion/buscar">Buscador</a>
+                                                <a href="{{url('/verificacion/buscar')}}">Buscador</a>
                                             </li>
                                             <li>
-                                                <a href="/verificacion/lista">Listado</a>
+                                                <a href="{{url('/verificacion/lista')}}">Listado</a>
                                             </li>
                                             <li>
-                                                <a href="/verificacion/procedimientos">Procedimientos</a>
+                                                <a href="{{url('/verificacion/procedimientos')}}">Procedimientos</a>
                                             </li>
                                             <li>
-                                                <a href="/verificacion/consulta">Declaraciones</a>
+                                                <a href="{{url('/verificacion/consulta')}}">Declaraciones</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -71,10 +71,10 @@
                                     <div class="dropdown left-indent">
                                         <ul class="dropdown-items">
                                             <li>
-                                                <a href="/usuarios">Usuarios</a>
+                                                <a href="{{url('/usuarios')}}">Usuarios</a>
                                             </li>
                                             <li>
-                                                <a href="/usuarios/roles">Roles y permisos</a>
+                                                <a href="{{url('/usuarios/roles')}}">Roles y permisos</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -84,9 +84,11 @@
                                     <div class="dropdown left-indent">
                                         <ul class="dropdown-items">
                                             <li>
-                                                <a href="/opciones">Configuración</a>
+                                                <a href="{{url('/config/opciones')}}">Configuración</a>
                                             </li>
-                                            
+                                            <li>
+                                                <a href="{{url('/config/calendario')}}">Calendario</a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </li>
@@ -95,23 +97,34 @@
                                     <div class="dropdown left-indent">
                                         <ul class="dropdown-items">
                                             <li>
-                                                <a href="/reportes/declaracion">Declaraciones</a>
+                                                <a href="{{url('/reportes/declaracion')}}">Declaraciones</a>
                                             </li>
                                             <li>
-                                                <a href="/reportes/cumplimiento">Cumplimiento</a>
+                                                <a href="{{url('/reportes/cumplimiento')}}">Cumplimiento</a>
                                             </li>
                                             <li>
-                                                <a href="/reportes/padron">Padrón</a>
+                                                <a href="{{url('/reportes/padron')}}">Padrón</a>
                                             </li>
                                             <li>
-                                                <a href="/reportes/omisos">Omisos</a>
+                                                <a href="{{url('/reportes/omisos')}}">Omisos</a>
                                             </li>
                                             
                                         </ul>
                                     </div>
                                 </li>
-                                <li>
-                                        <a href="/login/out">Salir</a>
+                                <li class="has-child ">
+                                    <a href="#">Sistema</a>
+                                    <div class="dropdown left-indent">
+                                        <ul class="dropdown-items">
+                                            <li>
+                                                <a href="{{url('/sistema/cuenta')}}">Mi cuenta</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{url('/login/out')}}">Salir</a>
+                                            </li>
+                                            
+                                        </ul>
+                                    </div>
                                 </li>
 
                             </ul>
