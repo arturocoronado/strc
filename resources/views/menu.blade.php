@@ -112,8 +112,25 @@
                                         </ul>
                                     </div>
                                 </li>
-                                <li>
-                                        <a href="{{url('/login/out')}}">Salir</a>
+                                <li class="has-child ">
+                                    <a href="#">Sistema</a>
+                                    <div class="dropdown left-indent">
+                                        <ul class="dropdown-items">
+                                            <li>
+                                                <a href="{{url('/reportes/declaracion')}}">Declaraciones</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{url('/reportes/cumplimiento')}}">Cumplimiento</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{url('/reportes/padron')}}">Padrón</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{url('/reportes/omisos')}}">Omisos</a>
+                                            </li>
+                                            
+                                        </ul>
+                                    </div>
                                 </li>
 
                             </ul>
