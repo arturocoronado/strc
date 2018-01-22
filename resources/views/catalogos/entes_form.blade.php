@@ -32,7 +32,7 @@
     <div class="form-group">
         <label>Tipo</label>
 
-      <select class="select2 require" id="cmbType" name="Tipo" style="width: 150px">
+      <select class="form-control" id="cmbType" name="Tipo" required="">
           <option value ="Centralizada" {{ $ente['Tipo']=="Centralizada" ? "selected" : "" }}>Centralizada</option>
             <option value ="Paraestatal" {{ $ente['Tipo']=="Paraestatal" ? "selected" : "" }}>Paraestatal</option>
             <option value ="Municipio" {{ $ente['Tipo']=="Municipio" ? "selected" : "" }} >Municipio</option>
