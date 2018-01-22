@@ -17,7 +17,7 @@ class NewPuestos extends Migration
             $table->increments('id');
             $table->string('Puesto');
             $table->string('Nivel', 50);
-            $table->integer('dependencia_id')->default(0);
+            $table->integer('ente_id')->default(0);
             $table->timestamps();
             $table->softDeletes();
             $table->integer('created_by')->nullable();
