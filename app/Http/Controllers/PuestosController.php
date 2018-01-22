@@ -18,26 +18,25 @@ class PuestosController extends Controller
         return view('catalogos.puestos_index')
                 ->with('params', $params);
     }
-    
-    public function data() {
-        $puestos = Puesto::orderBy('Puesto')->get();
         
-        header("Content-type: text/xml");
-    
-        print  "<?xml version='1.0' encoding='UTF-8'?>\n";
-        print  "<rows pos='0'>";
+    public function data(Request $req) {
+        $puestos = Puesto::all();
         
-        foreach($puestos as $i => $p){
-            print "<row id = '$p->id'>";
-            print "<cell>" . ($i+1) . "</cell>";
-            print "<cell>" . htmlspecialchars('<i class="fa fa-2x fa-search-plus" onclick="View(' . $p->id . ')"></i>') . "</cell>";
-            print "<cell>" . htmlspecialchars('<i class="fa fa-2x fa-trash-o" onclick="Delete(' . $p->id . ')"></i>') . "</cell>";
-            print "<cell>$p->Puesto</cell>";
-            print "<cell>$p->Nivel</cell>";
-            print "</row>";
+        $content=  "<?xml version='1.0' encoding='UTF-8'?>\n";
+        $content.=  "<rows pos='0'>";
+        
+        foreach($puestos as $i => $u){
+            $content.= "<row id = '$u->id'>";
+            $content.= "<cell>" . ($i+1) . "</cell>";
+            $content.= "<cell>" .htmlspecialchars("<i class='fa fa-2x fa-search-plus' onclick='View(" . $u->id . ")'></i>"). "</cell>";
+            $content.= "<cell>" .htmlspecialchars("<i class='fa fa-2x fa-trash-o' onclick='Delete(" . $u->id . ")'></i>"). "</cell>";
+            $content.= "<cell>" .htmlspecialchars($u->Puesto)."</cell>";
+            $content.= "<cell>" .htmlspecialchars($u->Nivel)."</cell>";
+            $content.= "</row>";
         }
             
-        print  "</rows>";
+        $content.=  "</rows>";
+        return response($content)->header('Content-Type', 'text/xml');
     }
     
     public function form($puesto = null) {
