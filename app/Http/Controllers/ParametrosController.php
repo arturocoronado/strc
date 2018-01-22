@@ -14,7 +14,7 @@ class ParametrosController extends Controller {
      */
     public function index() {
         $params[] = array("Header" => "#", "Width" => "40", "Attach" => "", "Align" => "center", "Sort" => "na", "Type" => "ro");
-        $params[] = array("Header" => "Parametro", "Width" => "*", "Attach" => "", "Align" => "center", "Sort" => "na", "Type" => "ro");
+        $params[] = array("Header" => "Opción", "Width" => "*", "Attach" => "", "Align" => "center", "Sort" => "na", "Type" => "ro");
         $params[] = array("Header" => "Valor", "Width" => "*", "Attach" => "", "Align" => "center", "Sort" => "na", "Type" => "ed");
         $params[] = array("Header" => "Descripción", "Width" => "*", "Attach" => "txt", "Align" => "left", "Sort" => "na", "Type" => "ro");
 
@@ -31,7 +31,7 @@ class ParametrosController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function data(Request $request) {
-        $parametros = Parametro::all();
+        $parametros = Parametro::all()->orderBy('orden', 'asc');
 
         $content = "<?xml version='1.0' encoding='UTF-8'?>\n";
         $content .= "<rows pos='0'>";
