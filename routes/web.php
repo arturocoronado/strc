@@ -57,6 +57,7 @@ Route::group(['prefix' => 'config'], function() {
     Route::get('opciones', 'ParametrosController@index')->name('config.parametros.index');
     Route::get('opciones/data', 'ParametrosController@data')->name('config.parametros.data');
     Route::post('opciones/save/{opcion?}', 'ParametrosController@save')->name('config.parametros.save');
+    Route::get('opciones/edit', 'ParametrosController@edit')->name('config.parametros.edit');
 });
 
 
