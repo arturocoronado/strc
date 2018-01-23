@@ -19,12 +19,18 @@ class LoginController extends Controller
            'pwd'   => 'required'
         ]);
         
-        $auth = \App\Usuario::where('RFC', $req->rfc)->where('Password', md5($req->pwd))->first();
+        $auth = \App\Usuario::where('RFC', 'ilike', "$req->rfc")->where('Password', md5($req->pwd))->first();
+        
+//        $auth = \App\Usuario::where(function($query) use ($req){
+//            $query->where('RFC', 'ilike', $req->rfc);
+//            $query->orWhere('Password', $req->Password);
+//        })->toSql();
 
+        
         if($auth){
             Auth::loginUsingId($auth->id);
 //            dd(auth()->check());
-            return redirect()->intended();
+            return redirect()->intended('/');
         }
 
         return redirect()->route('login.index')->withInput();
