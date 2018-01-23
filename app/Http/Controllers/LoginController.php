@@ -30,7 +30,7 @@ class LoginController extends Controller
         if($auth){
             Auth::loginUsingId($auth->id);
 //            dd(auth()->check());
-            return redirect()->intended();
+            return redirect()->intended('/');
         }
 
         return redirect()->route('login.index')->withInput();
