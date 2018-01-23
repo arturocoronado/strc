@@ -14,23 +14,28 @@
 
 <script>
     var grid;
+
+
     $(function () {
 
         {!! setGrid("grid", $params) !!}
-
+        $('#btnEdit').click(function () {
+            Modal('opciones/edit/', 'Ociones de configuración', 700);
+        });
         ReloadGrid(grid, "opciones/data", function () {
-            grid.attachEvent("onCellChanged", function (rId, cInd, nValue) {
-
-                $.post('opciones/save', {id: rId, valor: nValue}, function (res) {
-                    console.log(res);
-                }, 'json');
-
-
-
-            });
+//            grid.attachEvent("onCellChanged", function (rId, cInd, nValue) {
+//
+//                $.post('opciones/save', {id: rId, valor: nValue}, function (res) {
+//                    console.log(res);
+//                }, 'json');
+//
+//
+//
+//            });
         });
 
     });
+
 
     function View(id) {
     }
@@ -45,7 +50,9 @@
 
 
 @section ('content')
-
+<p>
+    <button id="btnEdit" class="btn btn-primary"><i class="fa fa-plus"></i> Actualizar</button>
+</p>
 <br>
 
 <table width="100%"  cellpadding="0" cellspacing="0">		

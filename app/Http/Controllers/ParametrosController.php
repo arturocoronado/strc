@@ -43,7 +43,6 @@ class ParametrosController extends Controller {
         $content = "<?xml version='1.0' encoding='UTF-8'?>\n";
         $content .= "<rows pos='0'>";
 
-
         foreach ($parametros as $i => $p) {
             $content .= "<row id = '$p->id'>";
             $content .= "<cell>" . ($i + 1) . "</cell>";
@@ -74,12 +73,18 @@ class ParametrosController extends Controller {
                 Parametro::where('id', $id)->update(array('Valor' => $r->$id));
             } else {
                 $nombre_archivo = 'f' . $id;
-                
+
                 if ($r->hasFile($nombre_archivo)) {
-                    $imageName = $nombre_archivo . '.' .$r->file($nombre_archivo)->getClientOriginalExtension();
-                    $r->file($nombre_archivo)->store($imageName);
+
+                    $imageName = $parametros->id . '.' .
+                            $r->file($nombre_archivo)->getClientOriginalExtension();
+
+                    $r->file($nombre_archivo)->move(
+                            base_path() . '/public/archivos/', $imageName
+                    );
+
                 } else {
-                    echo 'no hay archivo '.$nombre_archivo;
+                    echo 'no hay archivo ' . $nombre_archivo;
                 }
 
                 Parametro::where('id', $id)->update(array('Valor' => $imageName));
