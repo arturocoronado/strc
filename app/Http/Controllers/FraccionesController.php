@@ -19,26 +19,25 @@ class FraccionesController extends Controller
                 ->with('params', $params)
                 ->with('variable', 1);
     }
-    
-    public function data() {
-        $fracciones = Fraccion::orderBy('Fraccion')->get();
         
-        header("Content-type: text/xml");
-    
-        print  "<?xml version='1.0' encoding='UTF-8'?>\n";
-        print  "<rows pos='0'>";
+    public function data(Request $req) {
+        $fracciones = Fraccion::all();
         
-        foreach($fracciones as $d => $p){
-            print "<row id = '$p->id'>";
-            print "<cell>" . ($d+1) . "</cell>";
-            print "<cell>" . htmlspecialchars('<i class="fa fa-2x fa-search-plus" onclick="View(' . $p->id . ')"></i>') . "</cell>";
-            print "<cell>" . htmlspecialchars('<i class="fa fa-2x fa-trash-o" onclick="Delete(' . $p->id . ')"></i>') . "</cell>";
-            print "<cell>$p->Fraccion</cell>";
-            print "<cell>$p->Descripcion</cell>";
-            print "</row>";
+        $content=  "<?xml version='1.0' encoding='UTF-8'?>\n";
+        $content.=  "<rows pos='0'>";
+        
+        foreach($fracciones as $i => $u){
+            $content.= "<row id = '$u->id'>";
+            $content.= "<cell>" . ($i+1) . "</cell>";
+            $content.= "<cell>" .htmlspecialchars("<i class='fa fa-2x fa-search-plus' onclick='View(" . $u->id . ")'></i>"). "</cell>";
+            $content.= "<cell>" .htmlspecialchars("<i class='fa fa-2x fa-trash-o' onclick='Delete(" . $u->id . ")'></i>"). "</cell>";
+            $content.= "<cell>" .htmlspecialchars($u->Fraccion)."</cell>";
+            $content.= "<cell>" .htmlspecialchars($u->Descripcion)."</cell>";
+            $content.= "</row>";
         }
             
-        print  "</rows>";
+        $content.=  "</rows>";
+        return response($content)->header('Content-Type', 'text/xml');
     }
     
     public function form($fraccion = null) {

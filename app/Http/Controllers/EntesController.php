@@ -21,27 +21,26 @@ class EntesController extends Controller
                 ->with('params', $params)
                 ->with('variable', 1);
     }
-    
-    public function data() {
-        $entes = Ente::orderBy('Ente')->get();
         
-        header("Content-type: text/xml");
-    
-        print  "<?xml version='1.0' encoding='UTF-8'?>\n";
-        print  "<rows pos='0'>";
+    public function data(Request $req) {
+        $entes = Ente::all();
         
-        foreach($entes as $d => $p){
-            print "<row id = '$p->id'>";
-            print "<cell>" . ($d+1) . "</cell>";
-            print "<cell>" . htmlspecialchars('<i class="fa fa-2x fa-search-plus" onclick="View(' . $p->id . ')"></i>') . "</cell>";
-            print "<cell>" . htmlspecialchars('<i class="fa fa-2x fa-trash-o" onclick="Delete(' . $p->id . ')"></i>') . "</cell>";
-            print "<cell>$p->Ente</cell>";
-            print "<cell>$p->Siglas</cell>";
-            print "<cell>$p->Tipo</cell>";
-            print "</row>";
+        $content=  "<?xml version='1.0' encoding='UTF-8'?>\n";
+        $content.=  "<rows pos='0'>";
+        
+        foreach($entes as $i => $u){
+            $content.= "<row id = '$u->id'>";
+            $content.= "<cell>" . ($i+1) . "</cell>";
+            $content.= "<cell>" .htmlspecialchars("<i class='fa fa-2x fa-search-plus' onclick='View(" . $u->id . ")'></i>"). "</cell>";
+            $content.= "<cell>" .htmlspecialchars("<i class='fa fa-2x fa-trash-o' onclick='Delete(" . $u->id . ")'></i>"). "</cell>";
+            $content.= "<cell>" .htmlspecialchars($u->Ente)."</cell>";
+            $content.= "<cell>" .htmlspecialchars($u->Siglas)."</cell>";
+            $content.= "<cell>" .htmlspecialchars($u->Tipo)."</cell>";
+            $content.= "</row>";
         }
             
-        print  "</rows>";
+        $content.=  "</rows>";
+        return response($content)->header('Content-Type', 'text/xml');
     }
     
     public function form($ente = null) {

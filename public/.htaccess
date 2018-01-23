@@ -22,7 +22,7 @@
 <IfModule mod_rewrite.c>
     Options -MultiViews
     RewriteEngine On    
-    RewriteBase /declaranetplus/
+    RewriteBase /
 
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
