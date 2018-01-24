@@ -20,7 +20,7 @@
 
         {!! setGrid("grid", $params) !!}
         $('#btnEdit').click(function () {
-            Modal('opciones/edit/', 'Ociones de configuración', 700);
+            Modal('opciones/edit/', 'Opciones de configuración', 700);
         });
         ReloadGrid(grid, "opciones/data", function () {
 //            grid.attachEvent("onCellChanged", function (rId, cInd, nValue) {
