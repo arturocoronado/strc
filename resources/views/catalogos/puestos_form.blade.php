@@ -30,5 +30,14 @@
         <label>Nivel</label>
         <input type="text" class="form-control" name="Nivel" placeholder="Nivel de puesto" value="{{$puesto ? $puesto->Nivel : ""}}" required="">
     </div>
+    <div class="form-group">
+        <label>Ente</label>
+        <select class="form-control" name="ente_id" required="">
+            <option value="">Seleccione</option>
+            @foreach($entes as $e)
+            <option value="{{$e->id}}" {{($puesto && $e->id == $puesto->ente_id ? "selected":"")}} > {{$e->Ente}}</option>
+            @endforeach
+        </select>
+    </div>
     <p><button type="submit" class="btn btn-success btn-lg" id ="btnSave"><i class="fa fa-save"></i> Guardar</button></p>
 </form>

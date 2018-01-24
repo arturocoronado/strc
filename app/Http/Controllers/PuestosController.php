@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Puesto;
+use App\Ente;
 
 class PuestosController extends Controller
 {
@@ -43,9 +44,12 @@ class PuestosController extends Controller
         
         if($puesto)
             $puesto = Puesto::find($puesto);
+            $entes = Ente::orderBy('id')->get();
         
         return view('catalogos.puestos_form')
-                ->with('puesto', $puesto);
+                ->with('puesto', $puesto)
+                ->with('entes', $entes);
+                
     }
     
     public function save(Request $r, $puesto = null) {
