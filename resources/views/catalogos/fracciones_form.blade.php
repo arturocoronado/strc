@@ -29,5 +29,14 @@
         <label>Descripción</label>
         <input type="text" class="form-control" name="Descripcion" placeholder="Descripción" value="{{$fraccion ? $fraccion->Descripcion : ""}}" required="">
     </div>
+    <div class="form-group">
+        <label>Ente</label>
+        <select class="form-control" name="ente_id" required="">
+            <option value="">Seleccione</option>
+            @foreach($entes as $e)
+            <option value="{{$e->id}}" {{($fraccion && $e->id == $fraccion->ente_id ? "selected":"")}} > {{$e->Ente}}</option>
+            @endforeach
+        </select>
+    </div>
     <p><button type="submit" class="btn btn-success btn-lg" id ="btnSave"><i class="fa fa-save"></i> Guardar</button></p>
 </form>

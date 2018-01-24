@@ -14,7 +14,7 @@ class PuestosController extends Controller
         $params[] = array("Header" => "Borrar", "Width" => "50", "Attach" => "", "Align" => "center", "Sort" => "int", "Type" => "ed");
         $params[] = array("Header" => "Puesto", "Width" => "*", "Attach" => "txt", "Align" => "left", "Sort" => "str", "Type" => "ed");
         $params[] = array("Header" => "Nivel", "Width" => "100", "Attach" => "txt", "Align" => "center", "Sort" => "str", "Type" => "ed");
-        
+        $params[] = array("Header" => "Ente", "Width" => "100", "Attach" => "txt", "Align" => "center", "Sort" => "str", "Type" => "ed");
         
         return view('catalogos.puestos_index')
                 ->with('params', $params);
@@ -27,12 +27,15 @@ class PuestosController extends Controller
         $content.=  "<rows pos='0'>";
         
         foreach($puestos as $i => $u){
+            $e = Ente::find($u->ente_id);
+
             $content.= "<row id = '$u->id'>";
             $content.= "<cell>" . ($i+1) . "</cell>";
             $content.= "<cell>" .htmlspecialchars("<i class='fa fa-2x fa-search-plus' onclick='View(" . $u->id . ")'></i>"). "</cell>";
             $content.= "<cell>" .htmlspecialchars("<i class='fa fa-2x fa-trash-o' onclick='Delete(" . $u->id . ")'></i>"). "</cell>";
             $content.= "<cell>" .htmlspecialchars($u->Puesto)."</cell>";
             $content.= "<cell>" .htmlspecialchars($u->Nivel)."</cell>";
+            $content.= "<cell>" .htmlspecialchars($e->Siglas)."</cell>";
             $content.= "</row>";
         }
             
