@@ -64,7 +64,7 @@
         <td><div id="infopage_grid" style =""></div></td>
     </tr>
     <tr>
-        <td><div id="grid" style ="height: 300px; width: 100%"></div></td>
+        <td><div id="grid" style ="height: 400px;width: 100%"></div></td>
     </tr>
     <tr>
         <td class = "RowCount"></td>
