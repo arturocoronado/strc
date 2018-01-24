@@ -29,7 +29,7 @@ class LoginController extends Controller
         
         if($auth){
             Auth::loginUsingId($auth->id);
-//            dd(auth()->check());
+            
             return redirect()->intended('/');
         }
 
