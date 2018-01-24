@@ -20,9 +20,10 @@
 
         {!! setGrid("grid", $params) !!}
         $('#btnEdit').click(function () {
-            Modal('opciones/edit/', 'Ociones de configuración', 700);
+            Modal('opciones/edit/', 'Opciones de configuración', 700);
         });
         ReloadGrid(grid, "opciones/data", function () {
+            grid.enableAutoHeight(true);
 //            grid.attachEvent("onCellChanged", function (rId, cInd, nValue) {
 //
 //                $.post('opciones/save', {id: rId, valor: nValue}, function (res) {
@@ -63,7 +64,7 @@
         <td><div id="infopage_grid" style =""></div></td>
     </tr>
     <tr>
-        <td><div id="grid" style ="height: 300px; width: 100%"></div></td>
+        <td><div id="grid" style ="height: 400px;width: 100%"></div></td>
     </tr>
     <tr>
         <td class = "RowCount"></td>
