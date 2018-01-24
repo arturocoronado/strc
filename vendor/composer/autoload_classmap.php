@@ -20,7 +20,7 @@ return array(
     'App\\Http\\Controllers\\LoginController' => $baseDir . '/app/Http/Controllers/LoginController.php',
     'App\\Http\\Controllers\\ParametrosController' => $baseDir . '/app/Http/Controllers/ParametrosController.php',
     'App\\Http\\Controllers\\PuestosController' => $baseDir . '/app/Http/Controllers/PuestosController.php',
-    'App\\Http\\Controllers\\UsuariosController' => $baseDir . '/app/Http/Controllers/UsuariosController.php',
+    'App\\Http\\Controllers\\UsuariosController' => $baseDir . '/app/Http/Controllers/Usuarios/RolController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\CustomAuth' => $baseDir . '/app/Http/Middleware/CustomAuth.php',
     'App\\Http\\Middleware\\EncryptCookies' => $baseDir . '/app/Http/Middleware/EncryptCookies.php',

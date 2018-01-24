@@ -354,7 +354,7 @@ class ComposerStaticInit91cb942192570a1dfd5af85db99f589f
         'App\\Http\\Controllers\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/LoginController.php',
         'App\\Http\\Controllers\\ParametrosController' => __DIR__ . '/../..' . '/app/Http/Controllers/ParametrosController.php',
         'App\\Http\\Controllers\\PuestosController' => __DIR__ . '/../..' . '/app/Http/Controllers/PuestosController.php',
-        'App\\Http\\Controllers\\UsuariosController' => __DIR__ . '/../..' . '/app/Http/Controllers/UsuariosController.php',
+        'App\\Http\\Controllers\\UsuariosController' => __DIR__ . '/../..' . '/app/Http/Controllers/Usuarios/RolController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\CustomAuth' => __DIR__ . '/../..' . '/app/Http/Middleware/CustomAuth.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',

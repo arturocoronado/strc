@@ -44,6 +44,9 @@
                                             <li>
                                                 <a href="{{url('/padron/recordatorios')}}">Recordatorios</a>
                                             </li>
+                                            <li>
+                                                <a href="{{url('/padron/prorrogas')}}">Prórrogas</a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </li>
