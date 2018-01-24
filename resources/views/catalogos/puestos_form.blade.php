@@ -16,7 +16,7 @@
                Error(DisplayErrors(err));
             });
         });
-        
+    DoSelect('#select');
         
     });
 </script>
@@ -32,10 +32,21 @@
     </div>
     <div class="form-group">
         <label>Ente</label>
-        <select class="form-control" name="ente_id" required="">
-            <option value="">Seleccione</option>
+        <select id='select' class="" name="ente_id" required="" style="width: 550px">
             @foreach($entes as $e)
-            <option value="{{$e->id}}" {{($puesto && $e->id == $puesto->ente_id ? "selected":"")}} > {{$e->Ente}}</option>
+                @if($e->Tipo=='Centralizada')
+                <optgroup label="Centralizada">
+                <option value="0" selected > Todas las dependencias</option>
+                </optgroup>
+                @elseif($e->Tipo=='Paraestatal')
+                <optgroup label="Paraestatal">
+                <option value="{{$e->id}}" {{($puesto && $e->id == $puesto->ente_id ? "selected":"")}} > {{$e->Ente}}</option>
+                </optgroup>
+                @elseif($e->Tipo=='Municipio')
+                <optgroup label="Municipio">
+                <option value="{{$e->id}}" {{($puesto && $e->id == $puesto->ente_id ? "selected":"")}} > {{$e->Ente}}</option>
+                </optgroup>
+                @endif
             @endforeach
         </select>
     </div>
