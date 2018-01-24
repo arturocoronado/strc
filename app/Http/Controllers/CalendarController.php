@@ -15,7 +15,8 @@ class CalendarController extends Controller {
      */
     public function index() {
 //        dd(auth()->user()->admin_id);
-        $res = DB::table('calendarios')->min('Fecha');
+        $ente_id=auth()->user()->admin_id;
+        $res = DB::table('calendarios')->where("ente_id",'=',$ente_id)->min('Fecha');
         $date = new Carbon( $res );
         $min=$date->year;
                 return view('config.calendario_index')
