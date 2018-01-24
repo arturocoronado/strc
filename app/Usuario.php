@@ -33,7 +33,7 @@ class Usuario extends Authenticatable
         return $this->hasOne('App\Rol', 'id', 'rol_id');
     }
     
-    public function dependencia() {
-        return $this->hasOne('App\Dependencia', 'dependencia_id', 'id');
+    public function ente() {
+        return $this->hasOne('App\Ente', 'id', 'ente_id');
     }
 }
