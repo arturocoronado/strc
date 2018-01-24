@@ -26,6 +26,6 @@ class Fraccion extends Model
 //    Relaciones con otros modelo 
     
     public function usuarios() {
-        return $this->hasMany('App\Usuario', 'id', 'dependencia_id');
+        return $this->hasMany('App\Usuario', 'id', 'fraccion_id');
     }
 }
