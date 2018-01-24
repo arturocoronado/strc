@@ -23,6 +23,7 @@
             Modal('opciones/edit/', 'Opciones de configuración', 700);
         });
         ReloadGrid(grid, "opciones/data", function () {
+            grid.enableAutoHeight(true);
 //            grid.attachEvent("onCellChanged", function (rId, cInd, nValue) {
 //
 //                $.post('opciones/save', {id: rId, valor: nValue}, function (res) {
