@@ -32,7 +32,7 @@ class AlterRoles extends Migration
                 array(
                     'id'   => 1,
                     'Rol'     => 'Master', 
-                    'Permisos' => '1@G|3@G1@G|4@G|5@G|6@G|7@G|8@G|9@G|10@G|11@G|12@G|13@G|14@G|15@G|16@G|17@G'
+                    'Permisos' => '1,31,4,5,6,7,8,9,10,11,12,13,14,15,16,17'
                 )
         );
     }
