@@ -28,6 +28,7 @@ and open the template in the editor.
         <link type="text/css" rel="stylesheet" href="{{asset('js/dhtmlx/dhtmlx.css')}}">
         <link type="text/css" rel="stylesheet" href="{{asset('js/dataTables/css/jquery.dataTables.min.css')}}">
         <link type="text/css" rel="stylesheet" href="{{asset('js/sweetalert/dist/sweetalert.css')}}">
+        <link type="text/css" rel="stylesheet" href="{{asset('js/calendar/calendar.css')}}">
         
         @else  
         
@@ -70,6 +71,7 @@ and open the template in the editor.
         <script type="text/javascript" src="{{asset('js/jquery.multi-select.js')}}"></script>
         <script type="text/javascript" src="{{asset('js/sweetalert/dist/sweetalert2.all.js')}}"></script>
         <script type="text/javascript" src="{{asset('js/jquery.smartWizard.js')}}"></script>
+        <script type="text/javascript" src="{{asset('js/calendar/calendar.js')}}"></script>
         <script type="text/javascript" src="{{asset('js/fn.js')}}"></script>
         
         <script type="text/javascript">
