@@ -47,7 +47,10 @@ class ParametrosController extends Controller {
             $content .= "<row id = '$p->id'>";
             $content .= "<cell>" . ($i + 1) . "</cell>";
             $content .= "<cell>" . htmlspecialchars($p->Parametro) . "</cell>";
-            $content .= "<cell>" . htmlspecialchars($p->Valor) . "</cell>";
+            if ($p->id == 14 || $p->id == 15 || $p->id == 3)
+                $content .= "<cell>" . htmlspecialchars("<a href='" . url("archivos") . "/$p->Valor' target='_blank'>Abrir</a>") . "</cell>";
+            if ($p->id == 5)
+                $content .= "<cell>........</cell>";
             $content .= "<cell>" . htmlspecialchars($p->Descripcion) . "</cell>";
             $content .= "</row>";
         }
@@ -71,26 +74,69 @@ class ParametrosController extends Controller {
             $id = $p->id;
             if ($p->Tipo != 'jpg,png,gif' && $p->Tipo != 'pdf') {
                 Parametro::where('id', $id)->update(array('Valor' => $r->$id));
-            } else {
-                $nombre_archivo = 'f' . $id;
-
-                if ($r->hasFile($nombre_archivo)) {
-
-                    $imageName = $parametros->id . '.' .
-                            $r->file($nombre_archivo)->getClientOriginalExtension();
-
-                    $r->file($nombre_archivo)->move(
-                            base_path() . '/public/archivos/', $imageName
-                    );
-
-                } else {
-                    echo 'no hay archivo ' . $nombre_archivo;
-                }
-
-                Parametro::where('id', $id)->update(array('Valor' => $imageName));
             }
         }
         $parametros_nuevos = Parametro::all();
+        return response()->json($parametros_nuevos);
+    }
+
+    public function savemanual(Request $r) {
+        $nombre_archivo = 'manualpdf';
+        if ($r->hasFile($nombre_archivo)) {
+
+            $imageName = $nombre_archivo . '.' . $r->file($nombre_archivo)->getClientOriginalExtension();
+
+            $r->file($nombre_archivo)->move(
+                    base_path() . '/public/archivos/', $imageName
+            );
+        } else {
+            echo 'no hay archivo ' . $nombre_archivo;
+        }
+
+        Parametro::where('id', 3)->update(array('Valor' => $imageName));
+
+
+        $parametros_nuevos = Parametro::where('id', 3)->get();
+        return response()->json($parametros_nuevos);
+    }
+
+    public function savelogodep(Request $r) {
+        $nombre_archivo = 'logodep';
+        if ($r->file($nombre_archivo)) {
+
+            $imageName = $nombre_archivo . '.' . $r->file($nombre_archivo)->getClientOriginalExtension();
+
+            $r->file($nombre_archivo)->move(
+                    base_path() . '/public/archivos/', $imageName
+            );
+        } else {
+            echo 'no hay archivo ' . $nombre_archivo;
+        }
+
+        Parametro::where('id', 14)->update(array('Valor' => $imageName));
+
+
+        $parametros_nuevos = Parametro::where('id', 14)->get();
+        return response()->json($parametros_nuevos);
+    }
+
+    public function savelogogob(Request $r) {
+        $nombre_archivo = 'logogob';
+        if ($r->hasFile($nombre_archivo)) {
+
+            $imageName = $nombre_archivo . '.' . $r->file($nombre_archivo)->getClientOriginalExtension();
+
+            $r->file($nombre_archivo)->move(
+                    base_path() . '/public/archivos/', $imageName
+            );
+        } else {
+            echo 'no hay archivo ' . $nombre_archivo;
+        }
+
+        Parametro::where('id', 15)->update(array('Valor' => $imageName));
+
+
+        $parametros_nuevos = Parametro::where('id', 15)->get();
         return response()->json($parametros_nuevos);
     }
 
