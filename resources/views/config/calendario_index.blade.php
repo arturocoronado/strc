@@ -1,6 +1,6 @@
 @extends ('base')
 
-@section ('title', 'Configuración del sistema')
+@section ('title', 'Calendario de días inhábiles')
 
 @section ('style') 
 
@@ -45,7 +45,6 @@ $(function(){
 @endsection
 
 @section ('content')
-<div class="section-title">Calendario de días inhábiles</div>
 <select class="form-control input-lg" id ="cmbYear">
     <?php for($y=Date('Y')+1; $y>= $min; $y--){?>
     <option value="<?=$y?>" <?=($y==Date('Y')?"selected":"")?>><?=$y?></option>
