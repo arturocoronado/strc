@@ -61,6 +61,11 @@ Route::group(['prefix' => 'config'], function() {
     Route::post('opciones/savelogogob', 'ParametrosController@savelogogob')->name('config.parametros.savelogogob');
     Route::post('opciones/savelogodep', 'ParametrosController@savelogodep')->name('config.parametros.savelogodep');
     Route::get('opciones/edit', 'ParametrosController@edit')->name('config.parametros.edit');
+    
+    Route::get('calendario', 'CalendarController@index')->name('config.calendar.index');
+    Route::get('calendario/load', 'CalendarController@load')->name('config.calendar.load');
+    Route::get('calendario/save', 'CalendarController@save')->name('config.calendar.save');
+    Route::get('calendario/del', 'CalendarController@del')->name('config.calendar.del');
 });
 
 
