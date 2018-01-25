@@ -66,7 +66,7 @@ Route::group(['prefix' => 'config'], function() {
     Route::get('calendario/load', 'CalendarController@load')->name('config.calendar.load');
     Route::get('calendario/save', 'CalendarController@save')->name('config.calendar.save');
     Route::get('calendario/del', 'CalendarController@del')->name('config.calendar.del');
-})->middleware('auth');
+});
 
 
 

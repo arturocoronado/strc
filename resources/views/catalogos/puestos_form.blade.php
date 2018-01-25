@@ -30,6 +30,7 @@
         <label>Nivel</label>
         <input type="text" class="form-control" name="Nivel" placeholder="Nivel de puesto" value="{{$puesto ? $puesto->Nivel : ""}}" required="">
     </div>
+    @if(auth()->user()->Tipo == "GLOBAL")
     <div class="form-group">
         <label>Ente</label>
         <select id='select' class="" name="ente_id" required="" style="width: 550px">
@@ -50,5 +51,6 @@
             @endforeach
         </select>
     </div>
+    @endif 
     <p><button type="submit" class="btn btn-success btn-lg" id ="btnSave"><i class="fa fa-save"></i> Guardar</button></p>
 </form>
