@@ -68,11 +68,8 @@ class FraccionesController extends Controller
             'Descripcion'    => 'required', 
         ]);
         
-        $p = Fraccion::updateOrCreate(['id'=>($fraccion?$fraccion:0)], $r->all());
-        
-//        $puesto = new Puesto($r->all());
-        $puesto->save();
-        
+        $p = Fraccion::updateOrCreate(['id'=>($fraccion?$fraccion:0)], $r->all());        
+
     }
     
     public function delete($fraccion) {
