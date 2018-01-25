@@ -29,7 +29,7 @@
                                                 <a href="{{url('/catalogos/fracciones')}}">Fracciones</a>
                                             </li>
                                             <li>
-                                                <a href="{{url('/catalogos/contrataciones')}}">Contratos</a>
+                                                <a href="{{url('/catalogos/contratos')}}">Contratos</a>
                                             </li>
                                         </ul>
                                     </div>
