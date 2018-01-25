@@ -21,10 +21,10 @@ class CalendarController extends Controller {
             $date = new Carbon($res);
             $min = $date->year;
         } else {
-            $min = date('Y');
+            $min = date('YYYY');
         }
 
-
+        
         return view('config.calendario_index')
                         ->with('min', $min);
     }

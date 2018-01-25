@@ -70,10 +70,10 @@ class PuestosController extends Controller
         
         
         $new = Puesto::updateOrCreate(['id'=> $puesto], $r->all());
-        if(auth()->user()->Tipo != "GLOBAL")
+        if(auth()->user()->Tipo != "GLOBAL"){
             $new->ente_id = auth()->user()->admin_id;
-        $new->save(X);
-        
+            $new->save();
+        }
     }
     
     public function delete($puesto) {
