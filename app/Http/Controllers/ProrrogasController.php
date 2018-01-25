@@ -59,6 +59,10 @@ class ProrrogasController extends Controller
         
         
         Puesto::updateOrCreate(['id'=> $prorroga], $r->all());
+        if(auth()->user()->Tipo != "GLOBAL"){
+            $new->ente_id = auth()->user()->admin_id;
+            $new->save();
+        }
         
 
     }

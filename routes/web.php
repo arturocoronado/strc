@@ -51,6 +51,20 @@ Route::group(['prefix' => 'catalogos'], function() {
     Route::get('fracciones/form/{fraccion?}', 'FraccionesController@form')->name('catalogos.fracciones.form');
     Route::post('fracciones/save/{fraccion?}', 'FraccionesController@save')->name('catalogos.fracciones.save');
     Route::get('fracciones/delete/{fraccion}', 'FraccionesController@delete')->name('catalogos.fracciones.delete');
+
+    Route::get('contrataciones', 'ContratacionesController@index')->name('catalogos.contrataciones.index');
+    Route::get('contrataciones/data', 'ContratacionesController@data')->name('catalogos.contrataciones.data');
+    Route::get('contrataciones/form/{fraccion?}', 'ContratacionesController@form')->name('catalogos.contrataciones.form');
+    Route::post('contrataciones/save/{fraccion?}', 'ContratacionesController@save')->name('catalogos.contrataciones.save');
+    Route::get('contrataciones/delete/{fraccion}', 'ContratacionesController@delete')->name('catalogos.contrataciones.delete');
+});
+
+Route::group(['prefix' => 'padron'], function() {
+    Route::get('prorrogas', 'ProrrogasController@index')->name('padron.prorrogas.index');
+    Route::get('prorrogas/data', 'ProrrogasController@data')->name('padron.prorrogas.data');
+    Route::get('prorrogas/form/{prorroga?}', 'ProrrogasController@form')->name('catalogos.prorrogas.form');
+    Route::post('prorrogas/save/{prorroga?}', 'ProrrogasController@save')->name('catalogos.prorrogas.save');
+    Route::get('prorrogas/delete/{prorroga}', 'ProrrogasController@delete')->name('catalogos.prorrogas.delete');    
 });
 
 Route::group(['prefix' => 'config'], function() {

@@ -63,6 +63,10 @@ class EntesController extends Controller
         
         
         $p = Ente::updateOrCreate(['id'=>($ente?$ente:0)], $r->all());
+        if(auth()->user()->Tipo != "GLOBAL"){
+            $new->ente_id = auth()->user()->admin_id;
+            $new->save();
+        }
 
 //        $puesto = new Puesto($r->all());
 //        $puesto->save();

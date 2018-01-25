@@ -68,7 +68,11 @@ class FraccionesController extends Controller
             'Descripcion'    => 'required', 
         ]);
         
-        $p = Fraccion::updateOrCreate(['id'=>($fraccion?$fraccion:0)], $r->all());        
+        $p = Fraccion::updateOrCreate(['id'=>($fraccion?$fraccion:0)], $r->all()); 
+        if(auth()->user()->Tipo != "GLOBAL"){
+            $new->ente_id = auth()->user()->admin_id;
+            $new->save();
+        }
 
     }
     
