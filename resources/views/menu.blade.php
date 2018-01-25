@@ -15,6 +15,7 @@
                 <div class="col-sm-10 col-xs-8">
                         <nav class="main-nav pull-right">
                             <ul>
+                                @if(auth()->user()->admin_id)
                                 <li class="has-child ">
                                     <a href="#">Catálogos</a>
                                     <div class="dropdown left-indent">
@@ -129,7 +130,23 @@
                                         </ul>
                                     </div>
                                 </li>
-
+                                @else
+                                <li>
+                                    <a href="{{url('/micuenta')}}">Mi cuenta</a>
+                                </li>
+                                <li>
+                                    <a href="{{url('/declaracion')}}">Declaración</a>
+                                </li>
+                                <li>
+                                    <a href="{{url('/historial')}}">Historial</a>
+                                </li>
+                                <li>
+                                    <a href="{{url('/prorroga')}}">Prórroga</a>
+                                </li>
+                                <li>
+                                    <a href="{{url('/login/out')}}">Salir</a>
+                                </li>
+                                @endif 
                             </ul>
                         </nav>
 
