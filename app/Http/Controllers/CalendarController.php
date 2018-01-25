@@ -15,11 +15,17 @@ class CalendarController extends Controller {
      */
     public function index() {
 //        dd(auth()->user()->admin_id);
-        $ente_id=auth()->user()->admin_id;
-        $res = DB::table('calendarios')->where("ente_id",'=',$ente_id)->min('Fecha');
-        $date = new Carbon( $res );
-        $min=$date->year;
-                return view('config.calendario_index')
+        $ente_id = auth()->user()->admin_id;
+        $res = DB::table('calendarios')->where("ente_id", '=', $ente_id)->min('Fecha');
+        if ($res == null) {
+            $date = new Carbon($res);
+            $min = $date->year;
+        } else {
+            $min = date('Y');
+        }
+
+
+        return view('config.calendario_index')
                         ->with('min', $min);
     }
 
@@ -28,7 +34,7 @@ class CalendarController extends Controller {
         $year = $r->year;
         if (!$year)
             $year = Date('Y');
-        $data=DB::table('calendarios')
+        $data = DB::table('calendarios')
                 ->whereYear('Fecha', $year)
                 ->get();
 
@@ -40,18 +46,18 @@ class CalendarController extends Controller {
 
     public function save(Request $r) {
         $date = $r->d;
-        $ente_id=auth()->user()->admin_id;
+        $ente_id = auth()->user()->admin_id;
         $sql = "insert into calendarios(ente_id, \"Fecha\") values($ente_id,'" . $date . "')";
-        $res=DB::Insert($sql);
-        
+        $res = DB::Insert($sql);
+
         return response('', 200);
     }
 
     public function del(Request $r) {
         $date = $r->d;
         $sql = "delete from calendarios where 'Fecha' = '" . $date . "'";
-        $res=DB::Delete($sql);
-        
+        $res = DB::Delete($sql);
+
         return response('', 200);
     }
 
