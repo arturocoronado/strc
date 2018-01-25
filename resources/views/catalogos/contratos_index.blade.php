@@ -1,7 +1,7 @@
 
 @extends('base')
 
-@section('title', 'Catálogos de tipo de contrato')
+@section('title', 'Catálogos de tipo de contratación')
 
 @section('style')
 
@@ -23,13 +23,13 @@
          
         $('#btnNew').click(function(){
            
-           Modal('/catalogos/contratos/form', 'Tipo contrato', 600);
+           Modal('/catalogos/contratos/form', 'Tipo contratación', 600);
            
         });
     });
     
     function View(id){
-        Modal('/catalogos/contratos/form/' + id, 'Tipo contrato', 600);
+        Modal('/catalogos/contratos/form/' + id, 'Tipo contratación', 600);
     }
     
     function Delete(id){

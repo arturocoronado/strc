@@ -11,7 +11,7 @@ class ContratosController extends Controller
         $params[] = array("Header" => "#", "Width" => "40", "Attach" => "", "Align" => "center", "Sort" => "int", "Type" => "ro");
         $params[] = array("Header" => "Ver", "Width" => "40", "Attach" => "", "Align" => "center", "Sort" => "int", "Type" => "ro");
         $params[] = array("Header" => "Borrar", "Width" => "50", "Attach" => "", "Align" => "center", "Sort" => "int", "Type" => "ed");
-        $params[] = array("Header" => "Tipo", "Width" => "150", "Attach" => "cmb", "Align" => "center", "Sort" => "str", "Type" => "ed");
+        $params[] = array("Header" => "Tipo", "Width" => "*", "Attach" => "cmb", "Align" => "center", "Sort" => "str", "Type" => "ed");
         
         
         return view('catalogos.contratos_index')

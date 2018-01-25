@@ -20,7 +20,7 @@
     });
 </script>
 
-<form id ="contrato-form" action="{{route('catalogos.contratos.save', $ente)}}">
+<form id ="contrato-form" action="{{route('catalogos.contratos.save', $contrato)}}">
 
     <div class="form-group">
         <label>Tipo</label>
