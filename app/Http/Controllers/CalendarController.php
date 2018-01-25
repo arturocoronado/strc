@@ -21,7 +21,7 @@ class CalendarController extends Controller {
             $date = new Carbon($res);
             $min = $date->year;
         } else {
-            $min = date('Y');
+            $min = date('Y'); //que ondas
         }
 
 
