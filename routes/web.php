@@ -53,6 +53,14 @@ Route::group(['prefix' => 'catalogos'], function() {
     Route::get('fracciones/delete/{fraccion}', 'FraccionesController@delete')->name('catalogos.fracciones.delete');
 });
 
+Route::group(['prefix' => 'padron'], function() {
+    Route::get('prorrogas', 'ProrrogasController@index')->name('padron.prorrogas.index');
+    Route::get('prorrogas/data', 'ProrrogasController@data')->name('padron.prorrogas.data');
+    Route::get('prorrogas/form/{prorroga?}', 'ProrrogasController@form')->name('catalogos.prorrogas.form');
+    Route::post('prorrogas/save/{prorroga?}', 'ProrrogasController@save')->name('catalogos.prorrogas.save');
+    Route::get('prorrogas/delete/{prorroga}', 'ProrrogasController@delete')->name('catalogos.prorrogas.delete');    
+});
+
 Route::group(['prefix' => 'config'], function() {
     Route::get('opciones', 'ParametrosController@index')->name('config.parametros.index');
     Route::get('opciones/data', 'ParametrosController@data')->name('config.parametros.data');
