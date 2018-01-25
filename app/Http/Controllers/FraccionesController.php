@@ -71,7 +71,7 @@ class FraccionesController extends Controller
         $p = Fraccion::updateOrCreate(['id'=>($fraccion?$fraccion:0)], $r->all());
         
 //        $puesto = new Puesto($r->all());
-//        $puesto->save();
+        $puesto->save();
         
     }
     
