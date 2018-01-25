@@ -14,10 +14,10 @@ and open the template in the editor.
         <link rel="shortcut icon" href="{{asset('favicon.ico')}}" >
         <link type="text/css" rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
         
-        
         @if(auth()->check())
         
         
+        <link type="text/css" rel="stylesheet" href="{{asset('css/jquery-ui.css')}}">
         <link type="text/css" rel="stylesheet" href="{{asset('css/menu/plugins.css')}}">
         <link type="text/css" rel="stylesheet" href="{{asset('css/menu/style.css')}}">
         <link type="text/css" rel="stylesheet" href="{{asset('css/menu/presets/preset-gradient.css')}}">
@@ -80,7 +80,7 @@ and open the template in the editor.
                     headers: {'X-CSRF-Token': $('meta[name=csrf-token]').attr('content')}
                 });
                 
-                $('.main-nav').find('a[href="{{Request::url()}}"]').parents('li.has-child').addClass('active');
+                $('.main-nav').find('a[href="{{Request::url()}}"]').parents('li:last').addClass('active');
             });
         </script>
         

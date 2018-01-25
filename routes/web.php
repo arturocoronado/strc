@@ -82,10 +82,8 @@ Route::group(['prefix' => 'config'], function() {
     Route::get('calendario/del', 'CalendarController@del')->name('config.calendar.del');
 });
 
-
-
-
-
-
-
+Route::group(['prefix' => 'micuenta'], function(){
+    Route::get('/', 'MiCuentaController@index')->name('micuenta.index');
+    Route::get('/change/{id}', 'MiCuentaController@change')->name('micuenta.change');
+});
 

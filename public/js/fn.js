@@ -507,7 +507,8 @@ function DatePicker(obj, min, max, fn){
                 yearRange: (year - 100) + ":" + (year + 1)
         };
     $.datepicker.setDefaults($.datepicker.regional['es']);
-    $(obj).datepicker({dateFormat: "dd-M-yy", changeMonth: true, changeYear: true, onSelect: fn, minDate: min, maxDate: max }).attr('readonly', 'true');
+//    $(obj).datepicker({dateFormat: "dd-M-yy", changeMonth: true, changeYear: true, onSelect: fn, minDate: min, maxDate: max }).attr('readonly', 'true');
+    $(obj).datepicker({dateFormat: "dd/mm/yy", changeMonth: true, changeYear: true, onSelect: fn, minDate: min, maxDate: max }).attr('readonly', 'true');
 }
 
 function miniLoad(obj){

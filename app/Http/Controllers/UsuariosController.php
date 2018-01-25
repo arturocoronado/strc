@@ -64,12 +64,16 @@ class UsuariosController extends Controller
 
         $r->validate([
             'Nombre'    => 'required|max:255|max:255', 
-            'RFC'    => 'required|size:13', 
+            'Paterno'    => 'required|max:255|max:255', 
             'Correo'    => 'required|max:255|email', 
             'Password'    => 'required|max:255|confirmed', 
         ]);
+        $user= new Usuario();
+        $user->Nacimiento=$r->Nacimiento;
+        $user->Nacimiento='20180101';// SimpleDate( $user->Nacimiento);    
         
-        $user = Usuario::updateOrCreate(['id' => $user?$user:0], $r->all());
+       // $user = Usuario::updateOrCreate(['id' => $user?$user:0], $r->all());
+
         $user->Password = md5($r->Password);
         $user->save();
         

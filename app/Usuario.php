@@ -36,4 +36,16 @@ class Usuario extends Authenticatable
     public function ente() {
         return $this->hasOne('App\Ente', 'id', 'ente_id');
     }
+    
+    public function laborales() {
+        return $this->hasMany('App\Laboral', 'usuario_id');
+    }
+    
+    public function escolares() {
+        return $this->hasMany('App\Escolar', 'usuario_id');
+    }
+    
+    public function curriculares() {
+        return $this->hasMany('App\Curricular', 'usuario_id');
+    }
 }
