@@ -51,6 +51,12 @@ Route::group(['prefix' => 'catalogos'], function() {
     Route::get('fracciones/form/{fraccion?}', 'FraccionesController@form')->name('catalogos.fracciones.form');
     Route::post('fracciones/save/{fraccion?}', 'FraccionesController@save')->name('catalogos.fracciones.save');
     Route::get('fracciones/delete/{fraccion}', 'FraccionesController@delete')->name('catalogos.fracciones.delete');
+
+    Route::get('contrataciones', 'ContratacionesController@index')->name('catalogos.contrataciones.index');
+    Route::get('contrataciones/data', 'ContratacionesController@data')->name('catalogos.contrataciones.data');
+    Route::get('contrataciones/form/{fraccion?}', 'ContratacionesController@form')->name('catalogos.contrataciones.form');
+    Route::post('contrataciones/save/{fraccion?}', 'ContratacionesController@save')->name('catalogos.contrataciones.save');
+    Route::get('contrataciones/delete/{fraccion}', 'ContratacionesController@delete')->name('catalogos.contrataciones.delete');
 });
 
 Route::group(['prefix' => 'padron'], function() {
