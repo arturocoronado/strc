@@ -29,25 +29,29 @@
         <label>Descripción</label>
         <input type="text" class="form-control" name="Descripcion" placeholder="Descripción" value="{{$fraccion ? $fraccion->Descripcion : ""}}" required="">
     </div>
+    @if(auth()->user()->Tipo == "GLOBAL")
     <div class="form-group">
         <label>Ente</label>
         <select id="select" class="" name="ente_id" required="" style="width: 550px">
-            @foreach($entes as $e)
-                @if($e->Tipo=='Centralizada')
-                <optgroup label="Centralizada">
+           <optgroup label="Centralizada">
                 <option value="0" selected > Todas las dependencias</option>
-                </optgroup>
-                @elseif($e->Tipo=='Paraestatal')
-                <optgroup label="Paraestatal">
+           </optgroup>
+           <optgroup label="Paraestatal">
+           @foreach($entes as $e)
+            @if($e->Tipo=='Paraestatal')
                 <option value="{{$e->id}}" {{($fraccion && $e->id == $fraccion->ente_id ? "selected":"")}} > {{$e->Ente}}</option>
-                </optgroup>
-                @elseif($e->Tipo=='Municipio')
-                <optgroup label="Municipio">
+            @endif
+           @endforeach
+           </optgroup>
+           <optgroup label="Municipio">
+           @foreach($entes as $e)
+            @if($e->Tipo=='Municipio')
                 <option value="{{$e->id}}" {{($fraccion && $e->id == $fraccion->ente_id ? "selected":"")}} > {{$e->Ente}}</option>
-                </optgroup>
-                @endif
-            @endforeach
+            @endif
+           @endforeach     
+           </optgroup>
         </select>
     </div>
+    @endif
     <p><button type="submit" class="btn btn-success btn-lg" id ="btnSave"><i class="fa fa-save"></i> Guardar</button></p>
 </form>

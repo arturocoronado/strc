@@ -34,21 +34,23 @@
     <div class="form-group">
         <label>Ente</label>
         <select id='select' class="" name="ente_id" required="" style="width: 550px">
-            @foreach($entes as $e)
-                @if($e->Tipo=='Centralizada')
-                <optgroup label="Centralizada">
+          <optgroup label="Centralizada">
                 <option value="0" selected > Todas las dependencias</option>
-                </optgroup>
-                @elseif($e->Tipo=='Paraestatal')
-                <optgroup label="Paraestatal">
+           </optgroup>
+           <optgroup label="Paraestatal">
+           @foreach($entes as $e)
+            @if($e->Tipo=='Paraestatal')
                 <option value="{{$e->id}}" {{($puesto && $e->id == $puesto->ente_id ? "selected":"")}} > {{$e->Ente}}</option>
-                </optgroup>
-                @elseif($e->Tipo=='Municipio')
-                <optgroup label="Municipio">
+            @endif
+           @endforeach
+           </optgroup>
+           <optgroup label="Municipio">
+           @foreach($entes as $e)
+            @if($e->Tipo=='Municipio')
                 <option value="{{$e->id}}" {{($puesto && $e->id == $puesto->ente_id ? "selected":"")}} > {{$e->Ente}}</option>
-                </optgroup>
-                @endif
-            @endforeach
+            @endif
+           @endforeach     
+           </optgroup>
         </select>
     </div>
     @endif 
