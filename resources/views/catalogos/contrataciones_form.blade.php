@@ -1,7 +1,7 @@
 
 <script>
     $(function(){
-        $('#contrato-form').submit(function(e){
+        $('#contratacion-form').submit(function(e){
             e.preventDefault();
             
             LoadButton($('#btnSave'));
@@ -9,7 +9,7 @@
                 Ready();
                 OK("Guardado");
                 CloseModal();
-                ReloadGrid(grid, '/catalogos/contratos/data');
+                ReloadGrid(grid, '/catalogos/contrataciones/data');
             }).fail(function(err){
                Ready(); 
                Error(DisplayErrors(err));
@@ -20,16 +20,16 @@
     });
 </script>
 
-<form id ="contrato-form" action="{{route('catalogos.contratos.save', $contrato)}}">
+<form id ="contratacion-form" action="{{route('catalogos.contrataciones.save', $contratacion)}}">
 
     <div class="form-group">
         <label>Tipo</label>
 
       <select class="form-control" id="cmbType" name="Tipo" required="">
-          <option value ="Honorarios" {{ $contrato['Tipo']=="Honorarios" ? "selected" : "" }}>Honorarios</option>
-            <option value ="Municipal" {{ $contrato['Tipo']=="Municipal" ? "selected" : "" }}>Municipal</option>
-            <option value ="Estatal" {{ $contrato['Tipo']=="Estatal" ? "selected" : "" }} >Estatal</option>
-            <option value ="Federal" {{ $contrato['Tipo']=="Federal" ? "selected" : "" }} >Federal</option>
+          <option value ="Honorarios" {{ $contratacion['Tipo']=="Honorarios" ? "selected" : "" }}>Honorarios</option>
+            <option value ="Municipal" {{ $contratacion['Tipo']=="Municipal" ? "selected" : "" }}>Municipal</option>
+            <option value ="Estatal" {{ $contratacion['Tipo']=="Estatal" ? "selected" : "" }} >Estatal</option>
+            <option value ="Federal" {{ $contratacion['Tipo']=="Federal" ? "selected" : "" }} >Federal</option>
       </select>
         
     </div>

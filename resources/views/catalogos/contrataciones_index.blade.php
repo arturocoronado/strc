@@ -19,26 +19,26 @@
     
         {!! setGrid("grid", $params, true) !!}
         
-        ReloadGrid(grid, '/catalogos/contratos/data');
+        ReloadGrid(grid, '/catalogos/contrataciones/data');
          
         $('#btnNew').click(function(){
            
-           Modal('/catalogos/contratos/form', 'Tipo contratación', 600);
+           Modal('/catalogos/contrataciones/form', 'Tipo contratación', 600);
            
         });
     });
     
     function View(id){
-        Modal('/catalogos/contratos/form/' + id, 'Tipo contratación', 600);
+        Modal('/catalogos/contrataciones/form/' + id, 'Tipo contratación', 600);
     }
     
     function Delete(id){
         Question("¿Desea borrar?", function(){
            Loading();
-           $.get('/catalogos/contratos/delete/' + id, function(data){
+           $.get('/catalogos/contrataciones/delete/' + id, function(data){
               Ready();
               OK("Borrado");
-              ReloadGrid(grid, '/catalogos/contratos/data');
+              ReloadGrid(grid, '/catalogos/contrataciones/data');
            });
         });
     }

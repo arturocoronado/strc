@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Contrato;
+use App\Contratacion;
 
-class ContratosController extends Controller
+class ContratacionesController extends Controller
 {
     public function index() {
         $params[] = array("Header" => "#", "Width" => "40", "Attach" => "", "Align" => "center", "Sort" => "int", "Type" => "ro");
@@ -14,18 +14,18 @@ class ContratosController extends Controller
         $params[] = array("Header" => "Tipo", "Width" => "*", "Attach" => "cmb", "Align" => "center", "Sort" => "str", "Type" => "ed");
         
         
-        return view('catalogos.contratos_index')
+        return view('catalogos.contrataciones_index')
                 ->with('params', $params)
                 ->with('variable', 1);
     }
         
     public function data(Request $req) {
-        $contratos = Contrato::all();
+        $contrataciones = Contratacion::all();
         
         $content=  "<?xml version='1.0' encoding='UTF-8'?>\n";
         $content.=  "<rows pos='0'>";
         
-        foreach($contratos as $i => $u){
+        foreach($contrataciones as $i => $u){
             $content.= "<row id = '$u->id'>";
             $content.= "<cell>" . ($i+1) . "</cell>";
             $content.= "<cell>" .htmlspecialchars("<i class='fa fa-2x fa-search-plus' onclick='View(" . $u->id . ")'></i>"). "</cell>";
@@ -38,16 +38,16 @@ class ContratosController extends Controller
         return response($content)->header('Content-Type', 'text/xml');
     }
     
-    public function form($contrato = null) {
+    public function form($contratacion = null) {
         
-        if($contrato)
-            $contrato = Contrato::find($contrato);
+        if($contratacion)
+            $contratacion = Contratacion::find($contratacion);
         
-        return view('catalogos.contratos_form')
-                ->with('contrato', $contrato);
+        return view('catalogos.contrataciones_form')
+                ->with('contratacion', $contratacion);
     }
     
-    public function save(Request $r, $contrato = null) {
+    public function save(Request $r, $contratacion = null) {
         
         
         $r->validate([
@@ -55,7 +55,7 @@ class ContratosController extends Controller
         ]);
         
         
-        $p = Contrato::updateOrCreate(['id'=>($contrato?$contrato:0)], $r->all());
+        $p = Contratacion::updateOrCreate(['id'=>($contratacion?$contratacion:0)], $r->all());
         if(auth()->user()->Tipo != "GLOBAL"){
             $new->ente_id = auth()->user()->admin_id;
             $new->save();
@@ -66,8 +66,8 @@ class ContratosController extends Controller
         
     }
     
-    public function delete($contrato) {
-        $p = Contrato::find($contrato);
+    public function delete($contratacion) {
+        $p = Contratacion::find($contratacion);
         $p->delete();
     }
 }
