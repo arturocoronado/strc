@@ -128,7 +128,7 @@ and open the template in the editor.
                     {{csrf_field()}}
                     
                     <span id="reauth-email" class="reauth-email"></span>
-                    <input type="text" id="inputEmail" class="form-control" name ="rfc" placeholder="RFC con homoclave" required autofocus>
+                    <input type="text" id="inputEmail" class="form-control" name ="usuario" placeholder="RFC con homoclave" required autofocus>
                     <input type="password" id="inputPassword" class="form-control" name ="pwd" placeholder="Contraseña" required>
                     
                     <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Entrar</button>
