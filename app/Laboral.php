@@ -10,7 +10,7 @@ class Laboral extends Model
             
     protected $guarded = ['id'];
     
-    protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at', 'Inicio', 'Termino'];
     
     public function usuario() {
         return $this->belongsTo('App\Usuario', 'usuario_id')->withDefault();
