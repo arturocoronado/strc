@@ -12,6 +12,9 @@ class UsuariosController extends Controller
         
         $params[] = array("Header" => "#", "Width" => "40", "Attach" => "", "Align" => "center", "Sort" => "int", "Type" => "ro");
         $params[] = array("Header" => "Ver", "Width" => "40", "Attach" => "", "Align" => "center", "Sort" => "int", "Type" => "ro");
+
+        $params[] = array("Header" => "Editar", "Width" => "40", "Attach" => "", "Align" => "center", "Sort" => "int", "Type" => "ro");
+
         $params[] = array("Header" => "Borrar", "Width" => "50", "Attach" => "", "Align" => "center", "Sort" => "int", "Type" => "ro");
         $params[] = array("Header" => "Nombre", "Width" => "*", "Attach" => "txt", "Align" => "left", "Sort" => "str", "Type" => "ro");
         $params[] = array("Header" => "RFC", "Width" => "100", "Attach" => "txt", "Align" => "left", "Sort" => "str", "Type" => "ro");
@@ -36,6 +39,7 @@ class UsuariosController extends Controller
             $content.= "<row id = '$u->id'>";
             $content.= "<cell>" . ($i+1) . "</cell>";
             $content.= "<cell>" .htmlspecialchars("<i class='fa fa-2x fa-search-plus' onclick='View(" . $u->id . ")'></i>"). "</cell>";
+            $content.= "<cell>" .htmlspecialchars("<i class='fa fa-2x fa-pencil' onclick='Edit(" . $u->id . ")'></i>"). "</cell>";
             $content.= "<cell>" .htmlspecialchars("<i class='fa fa-2x fa-trash-o' onclick='Delete(" . $u->id . ")'></i>"). "</cell>";
             $content.= "<cell>" .htmlspecialchars($u->Nombre)."</cell>";
             $content.= "<cell>" .htmlspecialchars($u->RFC)."</cell>";
@@ -68,12 +72,15 @@ class UsuariosController extends Controller
             'Correo'    => 'required|max:255|email', 
             'Password'    => 'required|max:255|confirmed', 
         ]);
-        $user= new Usuario();
-        $user->Nacimiento=$r->Nacimiento;
-        $user->Nacimiento='20180101';// SimpleDate( $user->Nacimiento);    
         
-       // $user = Usuario::updateOrCreate(['id' => $user?$user:0], $r->all());
+                //$user= new Usuario();
+        //$user->Nacimiento=$r->Nacimiento;
+       // $user->Nacimiento='20180101';// SimpleDate( $user->Nacimiento);    
+        //$r->replace(array('Nacimiento' => '20180101'));
 
+        $user = Usuario::updateOrCreate(['id' => $user?$user:0], $r->all());
+        $user->Nacimiento='20180101'; //SimpleDate($r->Fecha);    
+        
         $user->Password = md5($r->Password);
         $user->save();
         

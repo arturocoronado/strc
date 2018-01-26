@@ -26,6 +26,9 @@
     function View(id){
         Modal('/usuarios/view/' + id, 'Usuario', 700);
     }
+    function Edit(id){
+        Modal('/usuarios/view/' + id, 'Usuario', 700);
+    }    
     
     function Delete(id){
 

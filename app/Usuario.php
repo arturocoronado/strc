@@ -22,7 +22,7 @@ class Usuario extends Authenticatable
 //    protected $fillable = array('Nombre, Correo, Password, Estatus');
 
 //    Campos restringidos en la tabla 
-    protected $guarded = ["Password_confirmation"];
+    protected $guarded = ["Password_confirmation",'id'];
     
     // Bandera de borrado en las tablas 
     protected $dates = ['deleted_at'];
