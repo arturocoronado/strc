@@ -32,8 +32,12 @@ Route::group(['prefix' => 'usuarios'], function() {
     Route::post('/save/{user?}', 'UsuariosController@save')->name('usuarios.save');
     Route::get('/data', 'UsuariosController@data')->name('usuarios.data');
     Route::get('/delete/{id}', 'UsuariosController@delete')->name('usuarios.delete');
+ 
 });
+Route::group(['prefix' => 'rol'], function() {
 
+    Route::get('/', 'RolController@index')->name('rol.index');   
+});
 Route::group(['prefix' => 'catalogos'], function() {
     Route::get('puestos', 'PuestosController@index')->name('catalogos.puestos.index');
     Route::get('puestos/data', 'PuestosController@data')->name('catalogos.puestos.data');

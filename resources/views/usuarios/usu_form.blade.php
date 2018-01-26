@@ -65,7 +65,7 @@
     </div>    
     <div class="form-group">
         <LABEL>Lugar de nacimiento</LABEL>
-        <input type="text" name="Lugar_nacimiento" class="form-control" placeholder="Lugar de nacimiento" value="{{$user ? $user->Lugar_nacimiento : ""}}" required="">
+        <input type="text" name="Lugar_nacimiento" class="form-control" placeholder="Lugar de nacimiento" value="{{$user ? $user->Lugar_nacimiento : ""}}" >
     </div>    
     <div class="form-group">
         <LABEL>Correo</LABEL>
@@ -93,12 +93,12 @@
 
     <div class="form-group" id="pwd" style="display:{{$user?"none":""}}">
         <LABEL>Password</LABEL>
-        <input type="password" name="Password" id='Password' class="form-control" {{$user?'disabled="disabled"':''}} placeholder="Password" {{$user?"":"required"}} >
+        <input type="password" name="Password" id='Password' class="form-control" {{$user?'disabled="disabled"':''}} placeholder="Password" required="">
     </div>
     
     <div class="form-group" id="pwd2" style="display:{{$user?"none":""}}">
         <LABEL>Confirmar</LABEL>
-        <input type="password" name="Password_confirmation" id="Password_confirmation" class="form-control" {{$user?'disabled="disabled"':''}} placeholder="Confirmar" {{$user?"":"required"}}>
+        <input type="password" name="Password_confirmation" id="Password_confirmation" class="form-control" {{$user?'disabled="disabled"':''}} placeholder="Confirmar" required="">
     </div>
     
     <p>

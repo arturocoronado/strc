@@ -20,7 +20,7 @@ class RolController extends Controller
         
 //        dd($request->url());
         
-        return view('usuarios.usu_index')
+        return view('usuarios.rol_index')
                 ->with('params', $params);
                 
     }

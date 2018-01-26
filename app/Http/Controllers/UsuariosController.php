@@ -78,16 +78,26 @@ class UsuariosController extends Controller
     
     public function save(Request $r, $user = null) {
         $validarPWD='';
-        if($r->Password){                    
-            $validarPWD="'Password'    => 'required|max:255',";
+        if($r->Password!=''){                    
+            $r->validate([
+                'Nombre'    => 'required|max:255|max:255', 
+                'Paterno'    => 'required|max:255|max:255', 
+                'Correo'    => 'required|max:255|email',
+                'RFC'    => 'required|min:13|max:13|email',
+                'Password'    => 'required|confirmed|max:255',
+                'Password_confirmation'    => 'required|max:255',
+
+            ]);                
+        }else{
+            $r->validate([
+                'Nombre'    => 'required|max:255|max:255', 
+                'Paterno'    => 'required|max:255|max:255', 
+                'Correo'    => 'required|max:255|email',
+                'RFC'    => 'required|min:13|max:13|email',                
+            ]);
         }
 
-        $r->validate([
-            'Nombre'    => 'required|max:255|max:255', 
-            'Paterno'    => 'required|max:255|max:255', 
-            'Correo'    => 'required|max:255|email',
-            $validarPWD
-        ]);
+
         
                 //$user= new Usuario();
         //$user->Nacimiento=$r->Nacimiento;
