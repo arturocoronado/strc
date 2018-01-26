@@ -19,10 +19,10 @@ class MiCuentaController extends Controller
         
         $personales = Usuario::find(auth()->user()->id);
         
-        session()->forget('DEC_POSITION');
+        $this->EvalDec($laborales);
+        
         if(!session('DEC_POSITION')){
             session()->put('DEC_POSITION', $laborales->first()->id);
-            $this->EvalDec();
         }
         
         return view('servidor.micuenta_index')
@@ -41,7 +41,8 @@ class MiCuentaController extends Controller
             abort(404);
         }
         
-        sleep(1);
+        return redirect('/micuenta');
+        
     }
     
     public function password() {
@@ -60,22 +61,54 @@ class MiCuentaController extends Controller
             $user->Password = md5($r->Password);
             $user->save();        
         }else{
-            return response()->json(['message' => 'La contraseña actual no es correcta'], 404);
+            return response()->json(['message' => 'La contraseña actual no es correcta'], 500);
         }
         
-       
     }
     
-     private function EvalDec(){
-//         dd(session('DEC_POSITION'));
-        $dec = Laboral::find(session('DEC_POSITION'))->declaraciones()->orderBy('id', 'DESC')->first();
-        $carbon = Carbon::createFromDate("2018-01-01");
-            dd($carbon);
-        if(!$dec){
-            session()->put('DEC_NEXT', 'INICIAL');
-        }else{
-            
+     private function EvalDec($laborales){
+        $now = new Carbon();
+        $status = array();
+        
+        foreach($laborales as $lab){
+            $dec = $lab->declaraciones()->orderBy('id', 'DESC')->first();
+            $start = new Carbon($lab->Inicio);
+
+            if(!$dec){
+                
+                $status[ $lab->id ]['NEXT'] = "INICIAL " . $start->year;
+                $status[ $lab->id ]['AVAILABLE'] = true;
+
+            }elseif($dec->Tipo == "INICIAL"){
+
+                if($start->year < $now->year){
+                    $status[ $lab->id ]['NEXT'] = 'ANUAL ' . $now->year;
+                    $status[ $lab->id ]['AVAILABLE'] = true;  
+                }else{
+                    $status[ $lab->id ]['NEXT'] = 'ANUAL ' . ($start->year+1);
+                    $status[ $lab->id ]['AVAILABLE'] = false;  
+                }
+
+            }elseif($dec->Tipo == "ANUAL"){
+
+                $last = new Carbon($dec->Fecha);
+                if($last->year < $now->year){
+                    $status[ $lab->id ]['NEXT'] = 'ANUAL ' . $now->year;
+                    $status[ $lab->id ]['AVAILABLE'] = true;
+                 }else{
+                     $status[ $lab->id ]['NEXT'] = 'ANUAL ' . ($last->year+1);
+                     $status[ $lab->id ]['AVAILABLE'] = false;
+                 }
+
+            }else{
+
+                $status[ $lab->id ]['NEXT'] = "NINGUNA";
+                $status[ $lab->id ]['AVAILABLE'] = false;
+
+            }
         }
-        dd(session('DEC_NEXT'));
+        
+        session()->put('DEC_STATUS', $status);
+//        dd(session('DEC_STATUS')[2]['NEXT']);
     }
 }

@@ -367,10 +367,15 @@
     function SimpleDate($datetime){
         $xplode = explode(" ", trim($datetime));
         $date = $xplode[0];
-        $time = $xplode[1];
+        $time = null;
+        if(Count($xplode) > 1)
+            $time = $xplode[1];
         
         if($date){
-            $exp = explode("/", $date);
+            if(substr_count($date, "/"))
+                $exp = explode("/", $date);
+            else
+                $exp = explode("-", $date);
             if(strlen($date[0]) == 4) // 2018/01/01
                 return trim($exp[2] . "/" . $exp[1] . "/" . $exp[0] . " " . $time);
             else{
