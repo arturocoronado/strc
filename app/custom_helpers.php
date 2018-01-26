@@ -371,13 +371,14 @@
         
         if($date){
             $exp = explode("/", $date);
-            if(strlen($date[0]) == 4)
+            if(strlen($date[0]) == 4) // 2018/01/01
                 return trim($exp[2] . "/" . $exp[1] . "/" . $exp[0] . " " . $time);
             else{
-                return trim($exp[0] . "/" . $exp[1] . "/" . $exp[2] . " " . $time);
+                return trim($exp[0] . "-" . $exp[1] . "-" . $exp[2] . " " . $time);
             }
         }
     }
+    
     function SimpleDate2($datetime){
         $xplode = explode(" ", trim($datetime));
         $date = $xplode[0];

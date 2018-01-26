@@ -85,5 +85,7 @@ Route::group(['prefix' => 'config'], function() {
 Route::group(['prefix' => 'micuenta'], function(){
     Route::get('/', 'MiCuentaController@index')->name('micuenta.index');
     Route::get('/change/{id}', 'MiCuentaController@change')->name('micuenta.change');
+    Route::get('/password', 'MiCuentaController@password')->name('micuenta.password');
+    Route::post('/password/save', 'MiCuentaController@pwdsave')->name('micuenta.pwdsave');
 });
 

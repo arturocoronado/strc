@@ -23,4 +23,8 @@ class Laboral extends Model
     public function puesto(){
         return $this->belongsTo('App\Puesto', 'puesto_id')->withDefault();
     }
+    
+    public function declaraciones() {
+        return $this->hasMany('App\Declaracion', 'laboral_id');
+    }
 }
