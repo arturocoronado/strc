@@ -5,16 +5,11 @@
 //          alert("SUBMIT") ;
           e.preventDefault();
           LoadButton($('#btnSave'));
-          console.log( $(this).attr('action'));
           $.post($(this).attr('action'), $(this).serialize(), function(data){
-             // Ready();
-             // ReloadGrid(grid, 'usuarios/data');
-             if(data){
-                 Error(data);
-             } 
-        //CloseModal();
-             
-                OK("Guardado");
+              Ready();
+              ReloadGrid(grid, 'usuarios/data');
+              CloseModal();
+              OK("Guardado");
 //              SweetAlert("success", "Guardado");
                   
           }).fail(function(err){
@@ -88,15 +83,20 @@
             @endforeach
         </select>
     </div>
-    
-    <div class="form-group">
+    <div class="form-group" id="chg1" style="display:{{$user?"":"none"}}">
+        <span class="label label-info" onclick="$('#pwd').show();$('#pwd2').show();$('#chg2').show();$('#chg1').hide();" id="myModalLabel">Cambiar password</span>
+    </div>    
+    <div class="form-group" id="chg2" style="display:none">
+        <span class="label label-info" onclick="$('#pwd').hide();$('#pwd2').hide();$('#chg1').show();$('#chg2').hide();" id="myModalLabel">Cancelar cambiar password</span>
+    </div>        
+    <div class="form-group" id="pwd" style="display:{{$user?"none":""}}">
         <LABEL>Password</LABEL>
-        <input type="password" name="Password" class="form-control" placeholder="Password"  required="">
+        <input type="password" name="Password" class="form-control" placeholder="Password" {{$user?"":"required"}} >
     </div>
     
-    <div class="form-group">
+    <div class="form-group" id="pwd2" style="display:{{$user?"none":""}}">
         <LABEL>Confirmar</LABEL>
-        <input type="password" name="Password_confirmation" class="form-control" placeholder="Confirmar" required="">
+        <input type="password" name="Password_confirmation" class="form-control" placeholder="Confirmar" {{$user?"":"required"}}>
     </div>
     
     <p> 
