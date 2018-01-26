@@ -28,6 +28,7 @@ Route::group(['prefix' => 'login'], function() {
 Route::group(['prefix' => 'usuarios'], function() {
     Route::get('/', 'UsuariosController@index')->name('usuarios.index');
     Route::get('/view/{id?}', 'UsuariosController@view')->name('usuarios.view');
+    Route::get('/form/{id?}', 'UsuariosController@form')->name('usuarios.form');
     Route::post('/save/{user?}', 'UsuariosController@save')->name('usuarios.save');
     Route::get('/data', 'UsuariosController@data')->name('usuarios.data');
     Route::get('/delete/{id}', 'UsuariosController@delete')->name('usuarios.delete');

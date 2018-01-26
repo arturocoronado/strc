@@ -52,9 +52,22 @@ class UsuariosController extends Controller
         return response($content)->header('Content-Type', 'text/xml');
     }
     
+    public function form(Request $req, $user = null) {
+        if($user){
+            $user = Usuario::find($user);
+           // $user = Usuario::orderBy('id')->get();
+        }
+        
+        $roles = Rol::orderBy('id')->get();
+//        dd($roles);
+        return view('usuarios.usu_form')
+                ->with('roles', $roles)
+                ->with('user', $user);
+    }
     public function view(Request $req, $user = null) {
         if($user){
             $user = Usuario::find($user);
+           // $user = Usuario::orderBy('id')->get();
         }
         
         $roles = Rol::orderBy('id')->get();
@@ -62,7 +75,7 @@ class UsuariosController extends Controller
         return view('usuarios.usu_view')
                 ->with('roles', $roles)
                 ->with('user', $user);
-    }
+    }    
     
     public function save(Request $r, $user = null) {
 
@@ -70,7 +83,6 @@ class UsuariosController extends Controller
             'Nombre'    => 'required|max:255|max:255', 
             'Paterno'    => 'required|max:255|max:255', 
             'Correo'    => 'required|max:255|email', 
-            'Password'    => 'required|max:255|confirmed', 
         ]);
         
                 //$user= new Usuario();
