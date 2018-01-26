@@ -53,36 +53,40 @@ class UsuariosController extends Controller
     }
     
     public function form(Request $req, $user = null) {
+        $data['Vista']=0;
         if($user){
             $user = Usuario::find($user);
-           // $user = Usuario::orderBy('id')->get();
-        }
-        
+        }        
         $roles = Rol::orderBy('id')->get();
-//        dd($roles);
         return view('usuarios.usu_form')
                 ->with('roles', $roles)
-                ->with('user', $user);
+                ->with('user', $user)
+                ->with('data', $data);
     }
     public function view(Request $req, $user = null) {
+         $data['Vista']=1;
         if($user){
             $user = Usuario::find($user);
-           // $user = Usuario::orderBy('id')->get();
-        }
-        
+        }     
         $roles = Rol::orderBy('id')->get();
-//        dd($roles);
-        return view('usuarios.usu_view')
+
+        return view('usuarios.usu_form')
                 ->with('roles', $roles)
-                ->with('user', $user);
+                ->with('user', $user)
+                ->with('data', $data);
     }    
     
     public function save(Request $r, $user = null) {
+        $validarPWD='';
+        if($r->Password){                    
+            $validarPWD="'Password'    => 'required|max:255',";
+        }
 
         $r->validate([
             'Nombre'    => 'required|max:255|max:255', 
             'Paterno'    => 'required|max:255|max:255', 
-            'Correo'    => 'required|max:255|email', 
+            'Correo'    => 'required|max:255|email',
+            $validarPWD
         ]);
         
                 //$user= new Usuario();
@@ -91,9 +95,10 @@ class UsuariosController extends Controller
         //$r->replace(array('Nacimiento' => '20180101'));
 
         $user = Usuario::updateOrCreate(['id' => $user?$user:0], $r->all());
-        $user->Nacimiento='20180101'; //SimpleDate($r->Fecha);    
-        
-        $user->Password = md5($r->Password);
+       // $user->Nacimiento='2018-01-01'; //SimpleDate($r->Fecha);    
+        if($r->Password){                    
+            $user->Password = md5($r->Password);
+        }
         $user->save();
         
 //        if($user)

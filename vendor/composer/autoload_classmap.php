@@ -7,7 +7,9 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
+    'App\\Contratacion' => $baseDir . '/app/Contratacion.php',
     'App\\Curricular' => $baseDir . '/app/Curricular.php',
+    'App\\Declaracion' => $baseDir . '/app/Declaracion.php',
     'App\\Ente' => $baseDir . '/app/Ente.php',
     'App\\Escolar' => $baseDir . '/app/Escolar.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
@@ -17,6 +19,7 @@ return array(
     'App\\Http\\Controllers\\Auth\\RegisterController' => $baseDir . '/app/Http/Controllers/Auth/RegisterController.php',
     'App\\Http\\Controllers\\Auth\\ResetPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ResetPasswordController.php',
     'App\\Http\\Controllers\\CalendarController' => $baseDir . '/app/Http/Controllers/CalendarController.php',
+    'App\\Http\\Controllers\\ContratacionesController' => $baseDir . '/app/Http/Controllers/ContratacionesController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\EntesController' => $baseDir . '/app/Http/Controllers/EntesController.php',
     'App\\Http\\Controllers\\FraccionesController' => $baseDir . '/app/Http/Controllers/FraccionesController.php',

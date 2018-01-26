@@ -341,7 +341,9 @@ class ComposerStaticInit91cb942192570a1dfd5af85db99f589f
 
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
+        'App\\Contratacion' => __DIR__ . '/../..' . '/app/Contratacion.php',
         'App\\Curricular' => __DIR__ . '/../..' . '/app/Curricular.php',
+        'App\\Declaracion' => __DIR__ . '/../..' . '/app/Declaracion.php',
         'App\\Ente' => __DIR__ . '/../..' . '/app/Ente.php',
         'App\\Escolar' => __DIR__ . '/../..' . '/app/Escolar.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
@@ -351,6 +353,7 @@ class ComposerStaticInit91cb942192570a1dfd5af85db99f589f
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\CalendarController' => __DIR__ . '/../..' . '/app/Http/Controllers/CalendarController.php',
+        'App\\Http\\Controllers\\ContratacionesController' => __DIR__ . '/../..' . '/app/Http/Controllers/ContratacionesController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\EntesController' => __DIR__ . '/../..' . '/app/Http/Controllers/EntesController.php',
         'App\\Http\\Controllers\\FraccionesController' => __DIR__ . '/../..' . '/app/Http/Controllers/FraccionesController.php',

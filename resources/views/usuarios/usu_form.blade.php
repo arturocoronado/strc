@@ -58,8 +58,10 @@
         <input type="text" name="Nacionalidad" class="form-control" placeholder="Usuario" value="{{$user ? $user->Nacionalidad : ""}}" required="">
     </div>  
     <div class="form-group">
-        <LABEL>Fecha de nacimiento</LABEL>
-        <input type="text" name="Nacimiento" class="form-control date" style="width:140px" placeholder="Fecha" value="{{$user ? $user->Nacimiento : ""}}" required="">
+        <LABEL>Fecha de nacimiento
+            
+        </LABEL>
+        <input type="text" name="Nacimiento" class="form-control date" style="width:140px" placeholder="Fecha" value="{{ $user ?Carbon\Carbon::parse( $user->Nacimiento)->format('d/m/Y'):"" }}" required="">
     </div>    
     <div class="form-group">
         <LABEL>Lugar de nacimiento</LABEL>
@@ -87,7 +89,8 @@
    <?php /* <span  class="   btn btn-danger btn-lg" id="chg2"  style="display:none" onclick="$('#pwd').hide();$('#pwd2').hide();$('#chg1').show();$('#chg2').hide(); $( '#chg1' ).prop( 'disabled', true ); $( '#chg2' ).prop( 'disabled', true ); " >Cancelar cambiar password</span>
     
     */   ?>
-    
+   <?php if($data['Vista']==0){ ?> 
+
     <div class="form-group" id="pwd" style="display:{{$user?"none":""}}">
         <LABEL>Password</LABEL>
         <input type="password" name="Password" id='Password' class="form-control" {{$user?'disabled="disabled"':''}} placeholder="Password" {{$user?"":"required"}} >
@@ -105,5 +108,6 @@
         <button class="btn btn-success btn-lg" type="submit" id ="btnSave"><i class="fa fa-save"></i> Guardar</button>
         
     </p>
+    <?php }?> 
     
 </form>

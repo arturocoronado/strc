@@ -26,7 +26,6 @@
         Modal('/usuarios/view/' + id, 'Usuario', 700);
     }
     function Edit(id){
-        alert(1);
         Modal('/usuarios/form/' + id, 'Usuario', 700);
     }    
     
