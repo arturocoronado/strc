@@ -1,3 +1,29 @@
+<script>
+    $(function(){
+        DatePicker($('.date'));        
+       $('#form-user').submit(function(e){
+//          alert("SUBMIT") ;
+          e.preventDefault();
+          LoadButton($('#btnSave'));
+          $.post($(this).attr('action'), $(this).serialize(), function(data){
+              Ready();
+              ReloadGrid(grid, 'usuarios/data');
+              CloseModal();
+              OK("Guardado");
+//              SweetAlert("success", "Guardado");
+                  
+          }).fail(function(err){
+              Ready();
+              Error(DisplayErrors(err));
+//              SweetAlert("error", DisplayErrors(error));
+          });
+       });
+
+    });
+    
+    
+</script>
+
 <form id ="form-user" action="{{route('usuarios.save', $user)}}">
     
     <h3><?php 
@@ -8,7 +34,7 @@
     
     <div class="form-group">
         <LABEL>Nombre</LABEL>
-        <label class="">{{$user ? $user->Nombre : ""}}</label>
+        <input type="text" name="Nombre" class="form-control" placeholder="Usuario" value="{{$user ? $user->Nombre : ""}}" required="">
     </div>
     <div class="form-group">
         <LABEL>Primer apellido</LABEL>
