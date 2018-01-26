@@ -21,19 +21,9 @@
 </script>
 
 <form id ="contratacion-form" action="{{route('catalogos.contrataciones.save', $contratacion)}}">
-
     <div class="form-group">
         <label>Tipo</label>
-
-      <select class="form-control" id="cmbType" name="Tipo" required="">
-          <option value ="Honorarios" {{ $contratacion['Tipo']=="Honorarios" ? "selected" : "" }}>Honorarios</option>
-            <option value ="Municipal" {{ $contratacion['Tipo']=="Municipal" ? "selected" : "" }}>Municipal</option>
-            <option value ="Estatal" {{ $contratacion['Tipo']=="Estatal" ? "selected" : "" }} >Estatal</option>
-            <option value ="Federal" {{ $contratacion['Tipo']=="Federal" ? "selected" : "" }} >Federal</option>
-      </select>
-        
-    </div>
-    
-    
+        <input type="text" class="form-control" name="Tipo" placeholder="Nombre del tipo de contratación" value="{{$contratacion ? $contratacion->Tipo : ""}}" required="">
+    </div>  
     <p><button type="submit" class="btn btn-success btn-lg" id ="btnSave"><i class="fa fa-save"></i> Guardar</button></p>
 </form>
