@@ -30,6 +30,10 @@
                 Error(DisplayErrors(err));
             });
        });
+       
+       $('#btnPwd').click(function(){
+            Modal('/micuenta/password', 'Cambiar mi contraseña de acceso', 600);
+       });
     });
 </script>
 
@@ -53,6 +57,9 @@
             <tD>{{$personales->RFC}}</tD>
             <td><label>Correo oficial</label></td>
             <tD>{{$personales->Correo}}</tD>
+            <tD>
+                <button class="btn btn-warning" id ="btnPwd"><i class="fa fa-lock"></i> Cambiar password</button>
+            </tD>
         </tr>
     </table>
 </div>

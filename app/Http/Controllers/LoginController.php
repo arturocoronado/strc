@@ -52,9 +52,9 @@ class LoginController extends Controller
         return redirect()->route('login.index')->withInput();
     }
     
-    public function out(Request $req) {
-//        $req->session()->flush();
+    public function out(Request $r) {
         auth()->logout();
+        session()->flush();
         return redirect()->route('login.index');
     }
 }
