@@ -94,3 +94,7 @@ Route::group(['prefix' => 'micuenta'], function(){
     Route::post('/password/save', 'MiCuentaController@pwdsave')->name('micuenta.pwdsave');
 });
 
+Route::group(['prefix' => 'formatos'], function() {
+    Route::get('inicial', 'FormatosController@index')->name('config.calendar.index');
+});
+
