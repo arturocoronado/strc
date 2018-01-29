@@ -1,0 +1,37 @@
+<?php
+$name='CINAOZ+ArialMT';
+$type='TTF';
+$desc=array (
+  'CapHeight' => 716.0,
+  'XHeight' => 519.0,
+  'FontBBox' => '[7 -210 642 720]',
+  'Flags' => 4,
+  'Ascent' => 720.0,
+  'Descent' => -210.0,
+  'Leading' => 0.0,
+  'ItalicAngle' => 0.0,
+  'StemV' => 87.0,
+  'MissingWidth' => 365.0,
+);
+$unitsPerEm=2048;
+$up=0;
+$ut=0;
+$strp=259;
+$strs=50;
+$ttffile='/Users/jorge/projects/declaranetplus/strc/public/css/fonts/formatos/f4.ttf';
+$TTCfontID='0';
+$originalsize=19332;
+$sip=false;
+$smp=false;
+$BMPselected=false;
+$fontkey='ff4';
+$panose=' 0 0 2 0 5 3 0 0 0 0 0 0';
+$haskerninfo=false;
+$haskernGPOS=false;
+$hassmallcapsGSUB=false;
+$fontmetrics='win';
+// TypoAscender/TypoDescender/TypoLineGap = 720, -210, 0
+// usWinAscent/usWinDescent = 720, -210
+// hhea Ascent/Descent/LineGap = 720, -210, 0
+$useOTL=0x0000;
+$rtlPUAstr='';
