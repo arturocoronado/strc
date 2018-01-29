@@ -5,7 +5,7 @@
         <meta charset="utf-8"/>
         <title></title>
 
-    </head>
+    </head> 
     <body>
         <div class="pagina1">
             <div class="center titulo_p1" style="margin-top: 25%">
