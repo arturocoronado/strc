@@ -27,4 +27,12 @@ class Laboral extends Model
     public function declaraciones() {
         return $this->hasMany('App\Declaracion', 'laboral_id');
     }
+    
+    public function contratacion() {
+        return $this->belongsTo('App\Contratacion', 'contratacion_id')->withDefault();
+    }
+    
+    public function funciones() {
+        return $this->belongsToMany('App\Funcion', 'laborales_funciones', 'laboral_id');
+    }
 }

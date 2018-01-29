@@ -12,7 +12,7 @@ class Rol extends Model
     use Userstamps;
     
     protected $table = "roles";
-    protected $guarded = [];
+    protected $guarded = ['id'];
     protected $dates = ['deleted_at'];
     
     public function usuario() {

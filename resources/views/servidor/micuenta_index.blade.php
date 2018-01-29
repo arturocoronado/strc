@@ -68,7 +68,7 @@
             <td><label>Acceso</label></td>
             <td>{{auth()->user()->Tipo}}</td>
             <td><label>Adscripción</label></td>
-            <td>{{auth()->user()->administra->Ente}}</td>
+            <td>{{auth()->user()->ente->Ente}}</td>
         </tr>
         @endif
     </table>
