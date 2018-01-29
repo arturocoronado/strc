@@ -43,9 +43,10 @@ class LoginController extends Controller
         
         if($auth){
             Auth::loginUsingId($auth->id);
-            if($isAdmin)
+            if($isAdmin){
                 return redirect()->intended('/');
-            else
+            
+            }else
                 return redirect('/micuenta');
         }
 
