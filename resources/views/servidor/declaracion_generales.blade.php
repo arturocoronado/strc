@@ -40,7 +40,7 @@
         <tr>
             <td><label>Dirección</label></td>
             <td colspan="9">
-                {{$laboral->FullAddress()}}
+                {{$laboral->getFullAddress()}}
             </td>
         </tr>
     </table>

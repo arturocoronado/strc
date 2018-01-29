@@ -40,7 +40,9 @@ class Laboral extends Model
         return $this->belongsTo('App\Ciudad', 'ciudad_id')->withDefault();
     }
     
-    public function FullAddress(){
-        return trim($this->Calle_trabajo . " " . $this->Numero_trabajo . " " . $this->Colonia_trabajo . ", " . $this->ciudad->Ciudad);
+    
+    public function getFullAddress(){
+        return trim($this->Calle_trabajo . " " . $this->Numero_trabajo . " " . $this->Colonia_trabajo . ", " . $this->ciudad->Ciudad . ", " . $this->ciudad->estado->Estado);
     }
+    
 }
