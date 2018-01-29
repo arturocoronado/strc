@@ -26,13 +26,13 @@ class RolController extends Controller
     }
     
     public function data(Request $req) {
-        $users = Usuario::all();
+        $roles = Rol::all();
         
         $content=  "<?xml version='1.0' encoding='UTF-8'?>\n";
         $content.=  "<rows pos='0'>";
         
         
-        foreach($users as $i => $u){
+        foreach($roles as $i => $r){
             $content.= "<row id = '$u->id'>";
             $content.= "<cell>" . ($i+1) . "</cell>";
             $content.= "<cell>" .htmlspecialchars("<i class='fa fa-2x fa-search-plus' onclick='View(" . $u->id . ")'></i>"). "</cell>";

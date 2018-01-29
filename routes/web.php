@@ -34,9 +34,9 @@ Route::group(['prefix' => 'usuarios'], function() {
     Route::get('/delete/{id}', 'UsuariosController@delete')->name('usuarios.delete');
  
 });
-Route::group(['prefix' => 'rol'], function() {
-
-    Route::get('/', 'RolController@index')->name('rol.index');   
+Route::group(['prefix' => 'roles'], function() {
+    Route::get('/', 'RolController@index')->name('roles.index');   
+    Route::get('/data', 'RolController@index')->name('roles.data');       
 });
 Route::group(['prefix' => 'catalogos'], function() {
     Route::get('puestos', 'PuestosController@index')->name('catalogos.puestos.index');

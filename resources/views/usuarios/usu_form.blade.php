@@ -41,8 +41,8 @@
         <input type="text" name="Paterno" class="form-control" placeholder="Paterno" value="{{$user ? $user->Paterno : ""}}" required="">
     </div>
         <div class="form-group">
-        <LABEL>Segundo apellifo</LABEL>
-        <input type="text" name="Materno" class="form-control" placeholder="Materno" value="{{$user ? $user->Materno : ""}}" required="">
+        <LABEL>Segundo apellido</LABEL>
+        <input type="text" name="Materno" class="form-control" placeholder="Materno" value="{{$user ? $user->Materno : ""}}" >
     </div>
  
     <div class="form-group">
@@ -81,7 +81,7 @@
         <select class="form-control" name="rol_id" required="">
             <option value="">Seleccione</option>
             @foreach($roles as $r)
-            <option value="{{$r->id}}" {{($user && $r->id == $user->rol_id ? "selected":"")}} > {{$r->NombreRol}}</option>
+            <option value="{{$r->id}}" {{($user && $r->id == $user->rol_id ? "selected":"")}} > {{$r->Rol}}</option>
             @endforeach
         </select>
     </div>
