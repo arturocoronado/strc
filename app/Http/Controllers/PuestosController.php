@@ -66,6 +66,7 @@ class PuestosController extends Controller
         $r->validate([
             'Puesto'    => 'required|max:255', 
             'Nivel'    => 'required', 
+            'ente_id'    => 'required|nullable',
         ]);
         
         
