@@ -30,10 +30,8 @@ class LoginController extends Controller
              ]);
         }
         
-        if($isAdmin)
-            $auth = Usuario::where('Correo', 'ilike', $req->usuario)->where('Password', md5($req->pwd))->first();
-        else
-            $auth = Usuario::where('RFC', 'ilike', $req->usuario)->where('Password', md5($req->pwd))->first();
+       
+        $auth = Usuario::where('RFC', 'ilike', $req->usuario)->where('Password', md5($req->pwd))->first();
         
 //        $auth = \App\Usuario::where(function($query) use ($req){
 //            $query->where('RFC', 'ilike', $req->rfc);
@@ -43,9 +41,8 @@ class LoginController extends Controller
         
         if($auth){
             Auth::loginUsingId($auth->id);
-            if($isAdmin){
+            if($auth->admin_id){
                 return redirect()->intended('/');
-            
             }else
                 return redirect('/micuenta');
         }

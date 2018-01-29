@@ -30,7 +30,7 @@ class Usuario extends Authenticatable
 //    Relaciones con otros modelo 
     
     public function rol() {
-        return $this->hasOne('App\Rol', 'id', 'rol_id');
+        return $this->belongsTo('App\Rol', 'rol_id');
     }
     
     public function ente() {
@@ -47,5 +47,9 @@ class Usuario extends Authenticatable
     
     public function curriculares() {
         return $this->hasMany('App\Curricular', 'usuario_id');
+    }
+    
+    public function administra() {
+        return $this->belongsTo('App\Ente', 'admin_id')->withDefault();
     }
 }

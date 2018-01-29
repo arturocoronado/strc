@@ -16,7 +16,7 @@
             });
         });
         
-        
+    DoSelect('#select');  
     });
 </script>
 
@@ -29,17 +29,17 @@
         <label>Siglas</label>
         <input type="text" class="form-control" name="Siglas" placeholder="Siglas" value="{{$ente ? $ente->Siglas : ""}}" required="">
     </div>
+    @if(auth()->user()->Tipo == "GLOBAL")
     <div class="form-group">
         <label>Tipo</label>
-
-      <select class="form-control" id="cmbType" name="Tipo" required="">
-          <option value ="Centralizada" {{ $ente['Tipo']=="Centralizada" ? "selected" : "" }}>Centralizada</option>
+      <select id="select" class="" name="Tipo" required="" style="width: 550px">
+            <option value="">Seleccione</option>
+            <option value ="Centralizada" {{ $ente['Tipo']=="Centralizada" ? "selected" : "" }}>Centralizada</option>
             <option value ="Paraestatal" {{ $ente['Tipo']=="Paraestatal" ? "selected" : "" }}>Paraestatal</option>
             <option value ="Municipio" {{ $ente['Tipo']=="Municipio" ? "selected" : "" }} >Municipio</option>
       </select>
         
     </div>
-    
-    
+    @endif
     <p><button type="submit" class="btn btn-success btn-lg" id ="btnSave"><i class="fa fa-save"></i> Guardar</button></p>
 </form>

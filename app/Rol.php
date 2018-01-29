@@ -15,4 +15,7 @@ class Rol extends Model
     protected $guarded = [];
     protected $dates = ['deleted_at'];
     
+    public function usuario() {
+        return $this->hasMany('App\Usuario', 'rol_id');
+    }
 }

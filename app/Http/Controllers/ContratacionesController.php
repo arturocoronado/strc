@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Contratacion;
+use App\Ente;
 
 class ContratacionesController extends Controller
 {
@@ -12,7 +13,7 @@ class ContratacionesController extends Controller
         $params[] = array("Header" => "Editar", "Width" => "50", "Attach" => "", "Align" => "center", "Sort" => "int", "Type" => "ro");
         $params[] = array("Header" => "Borrar", "Width" => "50", "Attach" => "", "Align" => "center", "Sort" => "int", "Type" => "ed");
         $params[] = array("Header" => "Tipo", "Width" => "*", "Attach" => "txt", "Align" => "left", "Sort" => "str", "Type" => "ed");
-        
+        $params[] = array("Header" => "Ente", "Width" => "200", "Attach" => "txt", "Align" => "center", "Sort" => "str", "Type" => "ed");
         
         return view('catalogos.contrataciones_index')
                 ->with('params', $params)
@@ -26,11 +27,19 @@ class ContratacionesController extends Controller
         $content.=  "<rows pos='0'>";
         
         foreach($contrataciones as $i => $u){
+            $e = Ente::find($u->ente_id);
+            
             $content.= "<row id = '$u->id'>";
             $content.= "<cell>" . ($i+1) . "</cell>";
             $content.= "<cell>" .htmlspecialchars("<i class='fa fa-2x fa-pencil' onclick='View(" . $u->id . ")'></i>"). "</cell>";
             $content.= "<cell>" .htmlspecialchars("<i class='fa fa-2x fa-trash-o' onclick='Delete(" . $u->id . ")'></i>"). "</cell>";
             $content.= "<cell>" .htmlspecialchars($u->Tipo)."</cell>";
+            if($u->ente_id == 0){
+                $content.= "<cell>Centralizada</cell>";
+            }
+            else{
+                $content.= "<cell>" .htmlspecialchars($e->Siglas)."</cell>";
+            }
             $content.= "</row>";
         }
             
@@ -42,9 +51,11 @@ class ContratacionesController extends Controller
         
         if($contratacion)
             $contratacion = Contratacion::find($contratacion);
+            $entes = Ente::orderBy('id')->get();
         
         return view('catalogos.contrataciones_form')
-                ->with('contratacion', $contratacion);
+                ->with('contratacion', $contratacion)
+                ->with('entes', $entes);
     }
     
     public function save(Request $r, $contratacion = null) {
