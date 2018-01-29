@@ -17,8 +17,6 @@ class DeclaracionController extends Controller
         $user = Usuario::find(auth()->user()->id);
         $lab = Laboral::find(session('DEC_POSITION'));
         
-        dd($user->administra());
-        
         return view('servidor.declaracion_generales')
                 ->with('user', $user)
                 ->with('laboral', $lab);

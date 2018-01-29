@@ -35,4 +35,12 @@ class Laboral extends Model
     public function funciones() {
         return $this->belongsToMany('App\Funcion', 'laborales_funciones', 'laboral_id');
     }
+    
+    public function ciudad() {
+        return $this->belongsTo('App\Ciudad', 'ciudad_id')->withDefault();
+    }
+    
+    public function FullAddress(){
+        return trim($this->Calle_trabajo . " " . $this->Numero_trabajo . " " . $this->Colonia_trabajo . ", " . $this->ciudad->Ciudad);
+    }
 }

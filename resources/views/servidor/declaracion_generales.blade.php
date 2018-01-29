@@ -38,9 +38,9 @@
             </td>
         </tr>
         <tr>
-            <td>Dirección</td>
-            <td>
-                {{}}
+            <td><label>Dirección</label></td>
+            <td colspan="9">
+                {{$laboral->FullAddress()}}
             </td>
         </tr>
     </table>
