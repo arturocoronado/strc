@@ -17,6 +17,7 @@
         });
         
         
+    DoSelect('#select');  
     });
 </script>
 
@@ -28,7 +29,7 @@
     @if(auth()->user()->Tipo == "GLOBAL")
     <div class="form-group">
         <label>Ente</label>
-        <select id="select" class="form-control" name="ente_id" required="" style="width: 550px">
+        <select id="select" class="" name="ente_id" required="" style="width: 550px">
                 <option value="" selected>Seleccione</option>
             <optgroup label="Centralizada">
                 <option value="0"> Todas las dependencias</option>
