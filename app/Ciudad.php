@@ -9,7 +9,7 @@ class Ciudad extends Model
     protected $table = "ciudades";
     protected $guarded = ['id'];
     
-    public function eatado() {
+    public function estado() {
         return $this->belongsTo('App\Estado', 'estado_id')->withDefault();
     }
 }
