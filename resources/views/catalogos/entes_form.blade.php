@@ -16,7 +16,7 @@
             });
         });
         
-        
+    DoSelect('#select');  
     });
 </script>
 
@@ -32,7 +32,7 @@
     @if(auth()->user()->Tipo == "GLOBAL")
     <div class="form-group">
         <label>Tipo</label>
-      <select class="form-control" id="cmbType" name="Tipo" required="">
+      <select id="select" class="" name="Tipo" required="" style="width: 550px">
             <option value="">Seleccione</option>
             <option value ="Centralizada" {{ $ente['Tipo']=="Centralizada" ? "selected" : "" }}>Centralizada</option>
             <option value ="Paraestatal" {{ $ente['Tipo']=="Paraestatal" ? "selected" : "" }}>Paraestatal</option>
