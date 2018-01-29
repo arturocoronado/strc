@@ -5,6 +5,8 @@ nbbuild/
 dist/
 storage/
 nbdist/
+vendor/
 nbactions.xml
 nb-configuration.xml
 .env
+public/.htaccess
