@@ -57,7 +57,7 @@ class EntesController extends Controller
         
         $r->validate([
             'Ente'    => 'required|max:255',
-            'Tipo'    => 'required',
+            'Tipo'    => 'required|nullable',
             'Siglas'    => 'required|alpha', 
         ]);
         
