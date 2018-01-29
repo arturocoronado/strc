@@ -76,23 +76,18 @@
         <tr>
             <td width="100"><label>Dependencia/Entidad</label></td>
             <td width="400">{{$l->ente->Ente}}</td>
-            <td width="100"><label>Puesto</label></td>
+            <td width="50"><label>Puesto</label></td>
             <td width="200">{{$l->puesto->Puesto}}</td>
-            <td width="100"><label>Alta</label></td>
-            <td width="200">
-                
-                {{$l->Inicio->format('d/m/Y')}}
-            </td>
+            <td width="50"><label>Alta</label></td>
+            <td width="100">{{$l->Inicio->format('d/m/Y')}}</td>
             <td><label>Siguiente declaración</label></td>
             <td><h4><span class="label label-{{session('DEC_STATUS')[$l->id]['AVAILABLE']?"primary":"default"}}"> {{session('DEC_STATUS')[$l->id]['NEXT']}} </span></h4></td>
         </tr>
         <tr>
             <td colspan="8">
                 @if($l->id == session('DEC_POSITION'))
-                <!--<center><button class="btn btn-success btn-change" id ="{{$l->id}}" disabled=""><i class="fa fa-check-square"></i> Puesto seleccionado</button></center>-->
-                <center><a class="btn btn-success btn-change" href="#" disabled=""><i class="fa fa-check-square"></i> Puesto seleccionado</a></center>
+                <center><a class="btn btn-success btn-change" disabled=""><i class="fa fa-check-square"></i> Puesto seleccionado</a></center>
                 @else 
-                <!--<center><button class="btn btn-danger btn-change" id ="{{$l->id}}"><i class="fa fa-exchange"></i> Seleccionar este puesto</button></center>-->
                 <center><a class="btn btn-danger btn-change" href="/micuenta/change/{{$l->id}}"><i class="fa fa-exchange"></i> Seleccionar este puesto</a></center>
                 @endif
             </td>

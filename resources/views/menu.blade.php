@@ -17,6 +17,25 @@
                             <ul>
                                 @if(auth()->user()->admin_id)
                                 <li class="has-child ">
+                                    <a href="#">Declaración</a>
+                                    <div class="dropdown left-indent">
+                                        <ul class="dropdown-items">
+                                            <li>
+                                                <a href="{{url('/micuenta')}}">Mi cuenta</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{url('/declaracion')}}">Declarar</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{url('/historial')}}">Historial</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{url('/prorroga')}}">Prórroga</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="has-child ">
                                     <a href="#">Catálogos</a>
                                     <div class="dropdown left-indent">
                                         <ul class="dropdown-items">
@@ -119,7 +138,7 @@
                                         </ul>
                                     </div>
                                 </li>
-                                <li class="has-child ">
+<!--                                <li class="has-child ">
                                     <a href="#">Sistema</a>
                                     <div class="dropdown left-indent">
                                         <ul class="dropdown-items">
@@ -132,7 +151,7 @@
                                             
                                         </ul>
                                     </div>
-                                </li>
+                                </li>-->
                                 @else
                                 <li>
                                     <a href="{{url('/micuenta')}}">Mi cuenta</a>
@@ -146,10 +165,10 @@
                                 <li>
                                     <a href="{{url('/prorroga')}}">Prórroga</a>
                                 </li>
+                                @endif 
                                 <li>
                                     <a href="{{url('/login/out')}}">Salir</a>
                                 </li>
-                                @endif 
                             </ul>
                         </nav>
 
