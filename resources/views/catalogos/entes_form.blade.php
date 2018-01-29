@@ -29,9 +29,9 @@
         <label>Siglas</label>
         <input type="text" class="form-control" name="Siglas" placeholder="Siglas" value="{{$ente ? $ente->Siglas : ""}}" required="">
     </div>
+    @if(auth()->user()->Tipo == "GLOBAL")
     <div class="form-group">
         <label>Tipo</label>
-
       <select class="form-control" id="cmbType" name="Tipo" required="">
             <option value="">Seleccione</option>
             <option value ="Centralizada" {{ $ente['Tipo']=="Centralizada" ? "selected" : "" }}>Centralizada</option>
@@ -40,7 +40,6 @@
       </select>
         
     </div>
-    
-    
+    @endif
     <p><button type="submit" class="btn btn-success btn-lg" id ="btnSave"><i class="fa fa-save"></i> Guardar</button></p>
 </form>

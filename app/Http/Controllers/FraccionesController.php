@@ -66,6 +66,7 @@ class FraccionesController extends Controller
         $r->validate([
             'Fraccion'    => 'required|max:255', 
             'Descripcion'    => 'required', 
+            'ente_id'    => 'required|nullable',
         ]);
         
         $p = Fraccion::updateOrCreate(['id'=>($fraccion?$fraccion:0)], $r->all()); 
