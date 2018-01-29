@@ -1,6 +1,6 @@
 @extends ('base')
 
-@section ('title', 'Lista de Usuarios')
+@section ('title', 'Lista de Roles')
 
 @section ('style') 
 
@@ -16,30 +16,30 @@
     var grid;
     $(function(){
         {!! setGrid("grid", $params) !!} 
-        ReloadGrid(grid, "usuarios/data");        
+        ReloadGrid(grid, "roles/data");        
         $('#btnNew').click(function(){
-            Modal('/usuarios/form/', 'Usuario', 700);
+            Modal('roles/form/', 'Usuario', 700);
         });
     });
     
     function View(id){
-        Modal('/usuarios/view/' + id, 'Usuario', 700);
+        Modal('/roles/view/' + id, 'Usuario', 700);
     }
     function Edit(id){
-        Modal('/usuarios/form/' + id, 'Usuario', 700);
+        Modal('/roles/form/' + id, 'Usuario', 700);
     }    
     
     function Delete(id){
 
         Question( "Desea borrar?", function(){
            Loading();
-           $.get('/usuarios/delete/' + id, function(data){
+           $.get('/usuarios/roles/delete/' + id, function(data){
               Ready();
               if(data)
                   Error(data);
               else{
                   OK("Borrado");
-                  ReloadGrid(grid, '/usuarios/data');
+                  ReloadGrid(grid, '/usuarios/roles/data');
               }
            });
         });

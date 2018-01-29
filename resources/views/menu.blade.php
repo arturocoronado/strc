@@ -81,7 +81,7 @@
                                                 <a href="{{url('/usuarios')}}">Usuarios</a>
                                             </li>
                                             <li>
-                                                <a href="{{url('/usuarios/roles')}}">Roles y permisos</a>
+                                                <a href="{{url('/roles')}}">Roles y permisos</a>
                                             </li>
                                         </ul>
                                     </div>
