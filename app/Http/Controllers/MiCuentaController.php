@@ -21,11 +21,12 @@ class MiCuentaController extends Controller
         
         $personales = Usuario::find(auth()->user()->id);
         
-        
-        $this->EvalDec($laborales);
-        
-        if(!session('DEC_POSITION')){
-            session()->put('DEC_POSITION', $laborales->first()->id);
+        if($laborales->count()){
+            $this->EvalDec($laborales);
+
+            if(!session('DEC_POSITION')){
+                session()->put('DEC_POSITION', $laborales->first()->id);
+            }
         }
         
         return view('servidor.micuenta_index')
