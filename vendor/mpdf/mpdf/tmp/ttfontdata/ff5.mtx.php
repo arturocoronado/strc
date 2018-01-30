@@ -1,0 +1,37 @@
+<?php
+$name='GUXGHF+Arial-BoldMT';
+$type='TTF';
+$desc=array (
+  'CapHeight' => 728.0,
+  'XHeight' => 0.0,
+  'FontBBox' => '[7 -210 824 728]',
+  'Flags' => 4,
+  'Ascent' => 728.0,
+  'Descent' => -210.0,
+  'Leading' => 0.0,
+  'ItalicAngle' => 0.0,
+  'StemV' => 87.0,
+  'MissingWidth' => 365.0,
+);
+$unitsPerEm=2048;
+$up=0;
+$ut=0;
+$strp=259;
+$strs=50;
+$ttffile='/Users/jorge/projects/declaranetplus/strc/public/css/fonts/formatos/f5.ttf';
+$TTCfontID='0';
+$originalsize=18816;
+$sip=false;
+$smp=false;
+$BMPselected=false;
+$fontkey='ff5';
+$panose=' 0 0 2 0 5 3 0 0 0 0 0 0';
+$haskerninfo=false;
+$haskernGPOS=false;
+$hassmallcapsGSUB=false;
+$fontmetrics='win';
+// TypoAscender/TypoDescender/TypoLineGap = 728, -210, 0
+// usWinAscent/usWinDescent = 728, -210
+// hhea Ascent/Descent/LineGap = 728, -210, 0
+$useOTL=0x0000;
+$rtlPUAstr='';

@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Parametro;
 use Illuminate\Http\Request;
-
+use DB;
+use App\Ente;
 class ParametrosController extends Controller {
 
     /**
@@ -13,14 +14,23 @@ class ParametrosController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $params[] = array("Header" => "#", "Width" => "40", "Attach" => "", "Align" => "center", "Sort" => "na", "Type" => "ro");
-        $params[] = array("Header" => "Opción", "Width" => "*", "Attach" => "", "Align" => "left", "Sort" => "na", "Type" => "ro");
-        $params[] = array("Header" => "Valor", "Width" => "*", "Attach" => "", "Align" => "center", "Sort" => "na", "Type" => "ro");
-        $params[] = array("Header" => "Descripción", "Width" => "*", "Attach" => "txt", "Align" => "left", "Sort" => "na", "Type" => "ro");
+        $tipo_user =auth()->user()->Tipo;
+        $ente = auth()->user()->administra();
+        $entes = Ente::orderBy('id')->get();
+//        dd($ente);
+        $parametros = $users = DB::table('parametros')
+                        ->leftJoin('parametros_valores', function($join) {
+                            $ente = auth()->user()->administra();
+                            $join->on('parametros.id', '=', 'parametros_valores.parametro_id')
+                            ->where('parametros_valores.ente_id', '=', $ente);
+                        })->get();
 
+//                dd($parametros);
 
         return view('config.parametros_index')
-                        ->with('params', $params);
+                        ->with('parametros', $parametros)
+                        ->with('tipo_user', $tipo_user)
+                        ->with('entes',$entes);
     }
 
     public function edit(Request $r) {
@@ -37,43 +47,21 @@ class ParametrosController extends Controller {
      * @param  \App\Parametros  $parametros
      * @return \Illuminate\Http\Response
      */
-    public function data(Request $request) {
-        $parametros = Parametro::orderBy('Orden', 'asc')->get();
-
-        $content = "<?xml version='1.0' encoding='UTF-8'?>\n";
-        $content .= "<rows pos='0'>";
-
-        foreach ($parametros as $i => $p) {
-            $content .= "<row id = '$p->id'>";
-            $content .= "<cell>" . ($i + 1) . "</cell>";
-            $content .= "<cell>" . htmlspecialchars($p->Parametro) . "</cell>";
-            if ($p->id == 14 || $p->id == 15 || $p->id == 3)
-                $content .= "<cell>" . htmlspecialchars("<a href='" . url("archivos") . "/$p->Valor' target='_blank'>Abrir</a>") . "</cell>";
-            if ($p->id == 5)
-                $content .= "<cell>........</cell>";
-            $content .= "<cell>" . htmlspecialchars($p->Descripcion) . "</cell>";
-            $content .= "</row>";
-        }
-
-        $content .= "</rows>";
-        return response($content)->header('Content-Type', 'text/xml');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Parametros  $parametros
-     * @return \Illuminate\Http\Response
-     */
     public function save(Request $r) {
-        $parametros = Parametro::all();
+        $ente = auth()->user()->administra();
+
+        $parametros = DB::select("Select *from parametros");
 
 
         foreach ($parametros as $i => $p) {
-            $id = $p->id;
-            if ($p->Tipo != 'jpg,png,gif' && $p->Tipo != 'pdf') {
-                Parametro::where('id', $id)->update(array('Valor' => $r->$id));
+            $nombre_input = 'i_' . $p->id;
+            if ($r->input($nombre_input)) {
+                $parametro_valor = DB::select("Select *from parametros_valores where parametro_id =$p->id and ente_id=$ente");
+                if (count($parametro_valor) > 0) {
+                    DB::update("update parametros_valores set \"Valor\"='" . $r->input($nombre_input) . "' where  parametro_id =$p->id and ente_id=$ente");
+                } else {
+                    DB::insert("insert into parametros_valores (parametro_id,ente_id,\"Valor\") values($p->id ,$ente,'" . $r->input($nombre_input) . "')");
+                }
             }
         }
         $parametros_nuevos = Parametro::all();
@@ -82,6 +70,8 @@ class ParametrosController extends Controller {
 
     public function savemanual(Request $r) {
         $nombre_archivo = 'manualpdf';
+        $imageName = "manualpdf.pdf";
+        $ente = auth()->user()->administra();
         if ($r->hasFile($nombre_archivo)) {
 
             $imageName = $nombre_archivo . '.' . $r->file($nombre_archivo)->getClientOriginalExtension();
@@ -93,35 +83,23 @@ class ParametrosController extends Controller {
             echo 'no hay archivo ' . $nombre_archivo;
         }
 
-        Parametro::where('id', 3)->update(array('Valor' => $imageName));
+        $parametro_valor = DB::select("Select *from parametros_valores where parametro_id =3 and ente_id=$ente");
+
+        if (count($parametro_valor) > 0) {
+            DB::update("update parametros_valores set \"Valor\"='" . $imageName . "' where  parametro_id =3 and ente_id=$ente");
+        } else {
+            DB::insert("insert into parametros_valores (parametro_id,ente_id,\"Valor\") values(3 ,$ente,'" . $imageName . "')");
+        }
 
 
-        $parametros_nuevos = Parametro::where('id', 3)->get();
+        $parametros_nuevos = $parametro_valor = DB::select("Select *from parametros_valores where parametro_id =3 and ente_id=$ente");
         return response()->json($parametros_nuevos);
     }
 
     public function savelogodep(Request $r) {
         $nombre_archivo = 'logodep';
-        if ($r->file($nombre_archivo)) {
-
-            $imageName = $nombre_archivo . '.' . $r->file($nombre_archivo)->getClientOriginalExtension();
-
-            $r->file($nombre_archivo)->move(
-                    base_path() . '/public/archivos/', $imageName
-            );
-        } else {
-            echo 'no hay archivo ' . $nombre_archivo;
-        }
-
-        Parametro::where('id', 14)->update(array('Valor' => $imageName));
-
-
-        $parametros_nuevos = Parametro::where('id', 14)->get();
-        return response()->json($parametros_nuevos);
-    }
-
-    public function savelogogob(Request $r) {
-        $nombre_archivo = 'logogob';
+        $imageName = "logodep";
+        $ente = auth()->user()->administra();
         if ($r->hasFile($nombre_archivo)) {
 
             $imageName = $nombre_archivo . '.' . $r->file($nombre_archivo)->getClientOriginalExtension();
@@ -133,10 +111,44 @@ class ParametrosController extends Controller {
             echo 'no hay archivo ' . $nombre_archivo;
         }
 
-        Parametro::where('id', 15)->update(array('Valor' => $imageName));
+        $parametro_valor = DB::select("Select *from parametros_valores where parametro_id = 14 and ente_id = $ente");
+
+        if (count($parametro_valor) > 0) {
+            DB::update("update parametros_valores set \"Valor\"='" . $imageName . "' where  parametro_id =14 and ente_id=$ente");
+        } else {
+            DB::insert("insert into parametros_valores (parametro_id,ente_id,\"Valor\") values(14 ,$ente,'" . $imageName . "')");
+        }
 
 
-        $parametros_nuevos = Parametro::where('id', 15)->get();
+        $parametros_nuevos = $parametro_valor = DB::select("Select *from parametros_valores where parametro_id =14 and ente_id=$ente");
+        return response()->json($parametros_nuevos);
+    }
+
+    public function savelogogob(Request $r) {
+        $nombre_archivo = 'logogob';
+        $imageName = "logogob";
+        $ente = auth()->user()->administra();
+        if ($r->hasFile($nombre_archivo)) {
+
+            $imageName = $nombre_archivo . '.' . $r->file($nombre_archivo)->getClientOriginalExtension();
+
+            $r->file($nombre_archivo)->move(
+                    base_path() . '/public/archivos/', $imageName
+            );
+        } else {
+            echo 'no hay archivo ' . $nombre_archivo;
+        }
+
+        $parametro_valor = DB::select("Select *from parametros_valores where parametro_id = 15 and ente_id = $ente");
+
+        if (count($parametro_valor) > 0) {
+            DB::update("update parametros_valores set \"Valor\"='" . $imageName . "' where  parametro_id =15 and ente_id=$ente");
+        } else {
+            DB::insert("insert into parametros_valores (parametro_id,ente_id,\"Valor\") values(15 ,$ente,'" . $imageName . "')");
+        }
+
+
+        $parametros_nuevos = $parametro_valor = DB::select("Select *from parametros_valores where parametro_id =15 and ente_id=$ente");
         return response()->json($parametros_nuevos);
     }
 

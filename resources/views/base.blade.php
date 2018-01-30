@@ -24,6 +24,7 @@ and open the template in the editor.
         <link type="text/css" rel="stylesheet" href="{{asset('css/font-awesome-4.7.0/css/font-awesome.css')}}">
         <link type="text/css" rel="stylesheet" href="{{asset('css/select2/select2.css')}}">
         <link type="text/css" rel="stylesheet" href="{{asset('css/multiselect/css/multi-select.css')}}">
+        <link type="text/css" rel="stylesheet" href="{{asset('css/smart_wizard.css')}}">
         <link type="text/css" rel="stylesheet" href="{{asset('css/smart_wizard_theme_arrows.css')}}">
         <link type="text/css" rel="stylesheet" href="{{asset('js/dhtmlx/dhtmlx.css')}}">
         <link type="text/css" rel="stylesheet" href="{{asset('js/dataTables/css/jquery.dataTables.min.css')}}">

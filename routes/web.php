@@ -94,3 +94,14 @@ Route::group(['prefix' => 'micuenta'], function(){
     Route::post('/password/save', 'MiCuentaController@pwdsave')->name('micuenta.pwdsave');
 });
 
+
+Route::group(['prefix' => 'declaracion'], function(){
+   Route::get('/', 'DeclaracionController@index')->name('declaracion.index'); 
+   Route::post('/generales', 'DeclaracionController@generales')->name('declaracion.generales'); 
+   
+});
+
+Route::group(['prefix' => 'formatos'], function() {
+    Route::get('inicial', 'FormatosController@index')->name('config.calendar.index');
+});
+

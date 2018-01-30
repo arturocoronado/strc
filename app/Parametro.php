@@ -9,8 +9,8 @@ use Wildside\Userstamps\Userstamps;
 class Parametro extends Model {
 
     //
-    use SoftDeletes;
-    use Userstamps;
+//    use SoftDeletes;
+//    use Userstamps;
 
     protected $table = "parametros";
     protected $guarded = [];

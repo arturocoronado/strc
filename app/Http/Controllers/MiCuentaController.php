@@ -15,14 +15,18 @@ class MiCuentaController extends Controller
 {
     public function index() {
         
+//        dd(auth()->user()->rol()->Rol);
+        
         $laborales = Usuario::find(auth()->user()->id)->laborales()->orderBy('id', 'DESC')->get();
         
         $personales = Usuario::find(auth()->user()->id);
         
-        $this->EvalDec($laborales);
-        
-        if(!session('DEC_POSITION')){
-            session()->put('DEC_POSITION', $laborales->first()->id);
+        if($laborales->count()){
+            $this->EvalDec($laborales);
+
+            if(!session('DEC_POSITION')){
+                session()->put('DEC_POSITION', $laborales->first()->id);
+            }
         }
         
         return view('servidor.micuenta_index')

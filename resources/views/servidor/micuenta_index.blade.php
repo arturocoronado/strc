@@ -47,9 +47,9 @@
     <p><i>Si considera que existe un error en su registro, favor de contactar a su área de personal</i></p>
 </div>
 
+<h3><span class="label label-success">Datos personales</span></h3><hr>
 <div class="alert alert-success">
-    <h3>Datos personales</h3><hr>
-    <table class="table table-striped">
+    <table class="table table-condensed">
         <tr>
             <td><label>Nombre</label></td>
             <td>{{$personales->Nombre}} {{$personales->Paterno}} {{$personales->Materno}}</td>
@@ -61,6 +61,16 @@
                 <button class="btn btn-warning" id ="btnPwd"><i class="fa fa-lock"></i> Cambiar password</button>
             </tD>
         </tr>
+        @if(auth()->user()->admin_id) 
+        <tr>
+            <td><label>Rol asignado</label></td>
+            <td>{{auth()->user()->rol->Rol}}</td>
+            <td><label>Acceso</label></td>
+            <td>{{auth()->user()->Tipo}}</td>
+            <td><label>Adscripción</label></td>
+            <td>{{auth()->user()->ente->Ente}}</td>
+        </tr>
+        @endif
     </table>
 </div>
 
@@ -81,7 +91,7 @@
             <td width="50"><label>Alta</label></td>
             <td width="100">{{$l->Inicio->format('d/m/Y')}}</td>
             <td><label>Siguiente declaración</label></td>
-            <td><h4><span class="label label-{{session('DEC_STATUS')[$l->id]['AVAILABLE']?"primary":"default"}}"> {{session('DEC_STATUS')[$l->id]['NEXT']}} </span></h4></td>
+            <td><h4><span class="label label-{{session('DEC_STATUS')[$l->id]['AVAILABLE']?"danger":"default"}}"> {{session('DEC_STATUS')[$l->id]['NEXT']}} </span></h4></td>
         </tr>
         <tr>
             <td colspan="8">
