@@ -19,7 +19,7 @@ class UsuariosController extends Controller
         $params[] = array("Header" => "Nombre", "Width" => "*", "Attach" => "txt", "Align" => "left", "Sort" => "str", "Type" => "ro");
         $params[] = array("Header" => "RFC", "Width" => "100", "Attach" => "txt", "Align" => "left", "Sort" => "str", "Type" => "ro");
         $params[] = array("Header" => "Correo", "Width" => "*", "Attach" => "txt", "Align" => "left", "Sort" => "str", "Type" => "ed");
-        $params[] = array("Header" => "Estatus", "Width" => "150", "Attach" => "txt", "Align" => "left", "Sort" => "str", "Type" => "ed");
+ //       $params[] = array("Header" => "Estatus", "Width" => "150", "Attach" => "txt", "Align" => "left", "Sort" => "str", "Type" => "ed");
         
 //        dd($request->url());
         
@@ -44,7 +44,7 @@ class UsuariosController extends Controller
             $content.= "<cell>" .htmlspecialchars($u->Nombre)."</cell>";
             $content.= "<cell>" .htmlspecialchars($u->RFC)."</cell>";
             $content.= "<cell>" .htmlspecialchars($u->Correo)."</cell>";
-            $content.= "<cell>" .htmlspecialchars($u->Estatus)."</cell>";
+          //  $content.= "<cell>" .htmlspecialchars($u->Estatus)."</cell>";
             $content.= "</row>";
         }
             

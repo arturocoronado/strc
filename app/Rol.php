@@ -13,6 +13,6 @@ class Rol extends Model
     
     protected $table = "roles";
     protected $guarded = [];
-    protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at'];  
     
 }

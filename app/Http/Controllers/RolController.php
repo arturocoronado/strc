@@ -11,16 +11,14 @@ class RolController extends Controller
     public function index(Request $request) {
         
         $params[] = array("Header" => "#", "Width" => "40", "Attach" => "", "Align" => "center", "Sort" => "int", "Type" => "ro");
-        $params[] = array("Header" => "Ver", "Width" => "40", "Attach" => "", "Align" => "center", "Sort" => "int", "Type" => "ro");
+        $params[] = array("Header" => "Editar", "Width" => "40", "Attach" => "", "Align" => "center", "Sort" => "int", "Type" => "ro");
         $params[] = array("Header" => "Borrar", "Width" => "50", "Attach" => "", "Align" => "center", "Sort" => "int", "Type" => "ro");
         $params[] = array("Header" => "Nombre", "Width" => "*", "Attach" => "txt", "Align" => "left", "Sort" => "str", "Type" => "ro");
-        $params[] = array("Header" => "RFC", "Width" => "100", "Attach" => "txt", "Align" => "left", "Sort" => "str", "Type" => "ro");
-        $params[] = array("Header" => "Correo", "Width" => "*", "Attach" => "txt", "Align" => "left", "Sort" => "str", "Type" => "ed");
-        $params[] = array("Header" => "Estatus", "Width" => "150", "Attach" => "txt", "Align" => "left", "Sort" => "str", "Type" => "ed");
+        $params[] = array("Header" => "Permisos", "Width" => "*", "Attach" => "txt", "Align" => "left", "Sort" => "str", "Type" => "ed");
         
 //        dd($request->url());
         
-        return view('usuarios.rol_index')
+    return view('usuarios.rol_index')
                 ->with('params', $params);
                 
     }
@@ -33,14 +31,14 @@ class RolController extends Controller
         
         
         foreach($roles as $i => $r){
-            $content.= "<row id = '$u->id'>";
+            $content.= "<row id = '$r->id'>";
             $content.= "<cell>" . ($i+1) . "</cell>";
-            $content.= "<cell>" .htmlspecialchars("<i class='fa fa-2x fa-search-plus' onclick='View(" . $u->id . ")'></i>"). "</cell>";
-            $content.= "<cell>" .htmlspecialchars("<i class='fa fa-2x fa-trash-o' onclick='Delete(" . $u->id . ")'></i>"). "</cell>";
-            $content.= "<cell>" .htmlspecialchars($u->Nombre)."</cell>";
-            $content.= "<cell>" .htmlspecialchars($u->RFC)."</cell>";
-            $content.= "<cell>" .htmlspecialchars($u->Correo)."</cell>";
-            $content.= "<cell>" .htmlspecialchars($u->Estatus)."</cell>";
+            $permisosDet=Permiso::wherein('id',$r->Permisos->toArray())->implode("Permiso",',');
+            
+            $content.= "<cell>" .htmlspecialchars("<i class='fa fa-2x fa-search-plus' onclick='View(" . $r->id . ")'></i>"). "</cell>";
+            $content.= "<cell>" .htmlspecialchars("<i class='fa fa-2x fa-trash-o' onclick='Delete(" . $r->id . ")'></i>"). "</cell>";
+            $content.= "<cell>" .htmlspecialchars($r->Nombre)."</cell>";
+            $content.= "<cell>" .htmlspecialchars($permisosDet)."</cell>";
             $content.= "</row>";
         }
             

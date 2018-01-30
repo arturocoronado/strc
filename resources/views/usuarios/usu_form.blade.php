@@ -49,13 +49,9 @@
         <LABEL>RFC</LABEL>
         <input type="text" name="RFC" class="form-control" placeholder="RFC" value="{{$user ? $user->RFC : ""}}" required="">
     </div>
-     <div class="form-group">
-        <LABEL>CURP</LABEL>
-        <input type="text" name="CURP" class="form-control" placeholder="Usuario" value="{{$user ? $user->CURP : ""}}" required="">
-    </div>  
     <div class="form-group">
         <LABEL>Nacionalidad</LABEL>
-        <input type="text" name="Nacionalidad" class="form-control" placeholder="Usuario" value="{{$user ? $user->Nacionalidad : ""}}" required="">
+        <input type="text" name="Nacionalidad" class="form-control" placeholder="Nacionalidad" value="{{$user ? $user->Nacionalidad : ""}}" required="">
     </div>  
     <div class="form-group">
         <LABEL>Fecha de nacimiento
@@ -73,7 +69,7 @@
     </div>
     <div class="form-group">
         <LABEL>Correo alterno</LABEL>
-        <input type="email" name="Correo_alterno" class="form-control" placeholder="Correo_alterno" value="{{$user ? $user->Correo_alterno : ""}}" >
+        <input type="email" name="Correo_alterno" class="form-control" placeholder="Correo alterno" value="{{$user ? $user->Correo_alterno : ""}}" >
     </div>    
     
     <div class="form-group">
