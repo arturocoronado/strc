@@ -3,7 +3,7 @@
 @section('title', 'Page Expired')
 
 @section('message')
-    The page has expired due to inactivity.
+    Esta página ha caducado por inactividad
     <br/><br/>
-    Please refresh and try again.
+    Por favor actualize par continuar.
 @stop

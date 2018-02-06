@@ -16,16 +16,18 @@
     var grid;
     $(function(){
         {!! setGrid("grid", $params) !!} 
-        ReloadGrid(grid, "usuarios/data");
-        
+        ReloadGrid(grid, "usuarios/data");        
         $('#btnNew').click(function(){
-            Modal('/usuarios/view/', 'Usuario', 700);
+            Modal('/usuarios/form/', 'Usuario', 700);
         });
     });
     
     function View(id){
         Modal('/usuarios/view/' + id, 'Usuario', 700);
     }
+    function Edit(id){
+        Modal('/usuarios/form/' + id, 'Usuario', 700);
+    }    
     
     function Delete(id){
 

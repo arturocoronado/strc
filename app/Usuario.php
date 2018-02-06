@@ -22,7 +22,7 @@ class Usuario extends Authenticatable
 //    protected $fillable = array('Nombre, Correo, Password, Estatus');
 
 //    Campos restringidos en la tabla 
-    protected $guarded = ["Password_confirmation"];
+    protected $guarded = ["Password_confirmation",'id'];
     
     // Bandera de borrado en las tablas 
     protected $dates = ['deleted_at'];
@@ -30,10 +30,37 @@ class Usuario extends Authenticatable
 //    Relaciones con otros modelo 
     
     public function rol() {
-        return $this->hasOne('App\Rol', 'id', 'rol_id');
+        return $this->belongsTo('App\Rol', 'rol_id');
     }
     
-    public function dependencia() {
-        return $this->hasOne('App\Dependencia', 'dependencia_id', 'id');
+    
+    public function laborales() {
+        return $this->hasMany('App\Laboral', 'usuario_id');
     }
+    
+    public function escolares() {
+        return $this->hasMany('App\Escolar', 'usuario_id');
+    }
+    
+    public function personales() {
+        return $this->hasMany('App\Personal', 'usuario_id');
+    }
+    
+    public function curriculares() {
+        return $this->hasMany('App\Curricular', 'usuario_id');
+    }
+    
+    public function ente() {
+        return $this->belongsTo('App\Ente', 'admin_id')->withDefault();
+    }
+    
+    function getFullName() {
+        return trim($this->Nombre . " " . $this->Paterno . " " . $this->Materno);
+    }
+    
+    function administra(){
+        return ($this->ente->Tipo == "Centralizada" ? 0 : $this->ente->id );
+        
+    }
+    
 }

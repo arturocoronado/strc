@@ -9,11 +9,11 @@ class EntesController extends Controller
 {
     public function index() {
         $params[] = array("Header" => "#", "Width" => "40", "Attach" => "", "Align" => "center", "Sort" => "int", "Type" => "ro");
-        $params[] = array("Header" => "Ver", "Width" => "40", "Attach" => "", "Align" => "center", "Sort" => "int", "Type" => "ro");
+        $params[] = array("Header" => "Editar", "Width" => "50", "Attach" => "", "Align" => "center", "Sort" => "int", "Type" => "ro");
         $params[] = array("Header" => "Borrar", "Width" => "50", "Attach" => "", "Align" => "center", "Sort" => "int", "Type" => "ed");
         $params[] = array("Header" => "Ente", "Width" => "*", "Attach" => "txt", "Align" => "left", "Sort" => "str", "Type" => "ed");
         $params[] = array("Header" => "Siglas", "Width" => "100", "Attach" => "txt", "Align" => "center", "Sort" => "str", "Type" => "ed");
-        $params[] = array("Header" => "Tipo", "Width" => "150", "Attach" => "txt", "Align" => "center", "Sort" => "str", "Type" => "ed");
+        $params[] = array("Header" => "Tipo", "Width" => "150", "Attach" => "cmb", "Align" => "center", "Sort" => "str", "Type" => "ed");
         
         
         
@@ -21,27 +21,26 @@ class EntesController extends Controller
                 ->with('params', $params)
                 ->with('variable', 1);
     }
-    
-    public function data() {
-        $entes = Ente::orderBy('Ente')->get();
         
-        header("Content-type: text/xml");
-    
-        print  "<?xml version='1.0' encoding='UTF-8'?>\n";
-        print  "<rows pos='0'>";
+    public function data(Request $req) {
+        $entes = Ente::all();
         
-        foreach($entes as $d => $p){
-            print "<row id = '$p->id'>";
-            print "<cell>" . ($d+1) . "</cell>";
-            print "<cell>" . htmlspecialchars('<i class="fa fa-2x fa-search-plus" onclick="View(' . $p->id . ')"></i>') . "</cell>";
-            print "<cell>" . htmlspecialchars('<i class="fa fa-2x fa-trash-o" onclick="Delete(' . $p->id . ')"></i>') . "</cell>";
-            print "<cell>$p->Ente</cell>";
-            print "<cell>$p->Siglas</cell>";
-            print "<cell>$p->Tipo</cell>";
-            print "</row>";
+        $content=  "<?xml version='1.0' encoding='UTF-8'?>\n";
+        $content.=  "<rows pos='0'>";
+        
+        foreach($entes as $i => $u){
+            $content.= "<row id = '$u->id'>";
+            $content.= "<cell>" . ($i+1) . "</cell>";
+            $content.= "<cell>" .htmlspecialchars("<i class='fa fa-2x fa-pencil' onclick='View(" . $u->id . ")'></i>"). "</cell>";
+            $content.= "<cell>" .htmlspecialchars("<i class='fa fa-2x fa-trash-o' onclick='Delete(" . $u->id . ")'></i>"). "</cell>";
+            $content.= "<cell>" .htmlspecialchars($u->Ente)."</cell>";
+            $content.= "<cell>" .htmlspecialchars($u->Siglas)."</cell>";
+            $content.= "<cell>" .htmlspecialchars($u->Tipo)."</cell>";
+            $content.= "</row>";
         }
             
-        print  "</rows>";
+        $content.=  "</rows>";
+        return response($content)->header('Content-Type', 'text/xml');
     }
     
     public function form($ente = null) {
@@ -58,12 +57,16 @@ class EntesController extends Controller
         
         $r->validate([
             'Ente'    => 'required|max:255',
-            'Tipo'    => 'required',
+            'Tipo'    => 'required|nullable',
             'Siglas'    => 'required|alpha', 
         ]);
         
         
         $p = Ente::updateOrCreate(['id'=>($ente?$ente:0)], $r->all());
+        if(auth()->user()->Tipo != "GLOBAL"){
+            $new->ente_id = auth()->user()->admin_id;
+            $new->save();
+        }
 
 //        $puesto = new Puesto($r->all());
 //        $puesto->save();

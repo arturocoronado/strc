@@ -14,19 +14,22 @@ and open the template in the editor.
         <link rel="shortcut icon" href="{{asset('favicon.ico')}}" >
         <link type="text/css" rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
         
-        
         @if(auth()->check())
         
         
+        <link type="text/css" rel="stylesheet" href="{{asset('css/jquery-ui.css')}}">
         <link type="text/css" rel="stylesheet" href="{{asset('css/menu/plugins.css')}}">
         <link type="text/css" rel="stylesheet" href="{{asset('css/menu/style.css')}}">
         <link type="text/css" rel="stylesheet" href="{{asset('css/menu/presets/preset-gradient.css')}}">
         <link type="text/css" rel="stylesheet" href="{{asset('css/font-awesome-4.7.0/css/font-awesome.css')}}">
         <link type="text/css" rel="stylesheet" href="{{asset('css/select2/select2.css')}}">
         <link type="text/css" rel="stylesheet" href="{{asset('css/multiselect/css/multi-select.css')}}">
+        <link type="text/css" rel="stylesheet" href="{{asset('css/smart_wizard.css')}}">
+        <link type="text/css" rel="stylesheet" href="{{asset('css/smart_wizard_theme_arrows.css')}}">
         <link type="text/css" rel="stylesheet" href="{{asset('js/dhtmlx/dhtmlx.css')}}">
         <link type="text/css" rel="stylesheet" href="{{asset('js/dataTables/css/jquery.dataTables.min.css')}}">
         <link type="text/css" rel="stylesheet" href="{{asset('js/sweetalert/dist/sweetalert.css')}}">
+        <link type="text/css" rel="stylesheet" href="{{asset('js/calendar/calendar.css')}}">
         
         @else  
         
@@ -68,6 +71,8 @@ and open the template in the editor.
         <script type="text/javascript" src="{{asset('js/select2.js')}}"></script>
         <script type="text/javascript" src="{{asset('js/jquery.multi-select.js')}}"></script>
         <script type="text/javascript" src="{{asset('js/sweetalert/dist/sweetalert2.all.js')}}"></script>
+        <script type="text/javascript" src="{{asset('js/jquery.smartWizard.js')}}"></script>
+        <script type="text/javascript" src="{{asset('js/calendar/calendar.js')}}"></script>
         <script type="text/javascript" src="{{asset('js/fn.js')}}"></script>
         
         <script type="text/javascript">
@@ -76,7 +81,7 @@ and open the template in the editor.
                     headers: {'X-CSRF-Token': $('meta[name=csrf-token]').attr('content')}
                 });
                 
-                $('.main-nav').find('a[href="{{Request::url()}}"]').parents('li.has-child').addClass('active');
+                $('.main-nav').find('a[href="{{Request::url()}}"]').parents('li:last').addClass('active');
             });
         </script>
         
@@ -124,7 +129,7 @@ and open the template in the editor.
                     {{csrf_field()}}
                     
                     <span id="reauth-email" class="reauth-email"></span>
-                    <input type="text" id="inputEmail" class="form-control" name ="rfc" placeholder="RFC con homoclave" required autofocus>
+                    <input type="text" id="inputEmail" class="form-control" name ="usuario" placeholder="RFC con homoclave" required autofocus>
                     <input type="password" id="inputPassword" class="form-control" name ="pwd" placeholder="Contraseña" required>
                     
                     <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Entrar</button>

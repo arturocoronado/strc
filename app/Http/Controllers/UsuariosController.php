@@ -12,11 +12,14 @@ class UsuariosController extends Controller
         
         $params[] = array("Header" => "#", "Width" => "40", "Attach" => "", "Align" => "center", "Sort" => "int", "Type" => "ro");
         $params[] = array("Header" => "Ver", "Width" => "40", "Attach" => "", "Align" => "center", "Sort" => "int", "Type" => "ro");
+
+        $params[] = array("Header" => "Editar", "Width" => "40", "Attach" => "", "Align" => "center", "Sort" => "int", "Type" => "ro");
+
         $params[] = array("Header" => "Borrar", "Width" => "50", "Attach" => "", "Align" => "center", "Sort" => "int", "Type" => "ro");
         $params[] = array("Header" => "Nombre", "Width" => "*", "Attach" => "txt", "Align" => "left", "Sort" => "str", "Type" => "ro");
         $params[] = array("Header" => "RFC", "Width" => "100", "Attach" => "txt", "Align" => "left", "Sort" => "str", "Type" => "ro");
         $params[] = array("Header" => "Correo", "Width" => "*", "Attach" => "txt", "Align" => "left", "Sort" => "str", "Type" => "ed");
-        $params[] = array("Header" => "Estatus", "Width" => "150", "Attach" => "txt", "Align" => "left", "Sort" => "str", "Type" => "ed");
+ //       $params[] = array("Header" => "Estatus", "Width" => "150", "Attach" => "txt", "Align" => "left", "Sort" => "str", "Type" => "ed");
         
 //        dd($request->url());
         
@@ -36,11 +39,12 @@ class UsuariosController extends Controller
             $content.= "<row id = '$u->id'>";
             $content.= "<cell>" . ($i+1) . "</cell>";
             $content.= "<cell>" .htmlspecialchars("<i class='fa fa-2x fa-search-plus' onclick='View(" . $u->id . ")'></i>"). "</cell>";
+            $content.= "<cell>" .htmlspecialchars("<i class='fa fa-2x fa-pencil' onclick='Edit(" . $u->id . ")'></i>"). "</cell>";
             $content.= "<cell>" .htmlspecialchars("<i class='fa fa-2x fa-trash-o' onclick='Delete(" . $u->id . ")'></i>"). "</cell>";
             $content.= "<cell>" .htmlspecialchars($u->Nombre)."</cell>";
             $content.= "<cell>" .htmlspecialchars($u->RFC)."</cell>";
             $content.= "<cell>" .htmlspecialchars($u->Correo)."</cell>";
-            $content.= "<cell>" .htmlspecialchars($u->Estatus)."</cell>";
+          //  $content.= "<cell>" .htmlspecialchars($u->Estatus)."</cell>";
             $content.= "</row>";
         }
             
@@ -48,29 +52,63 @@ class UsuariosController extends Controller
         return response($content)->header('Content-Type', 'text/xml');
     }
     
-    public function view(Request $req, $user = null) {
+    public function form(Request $req, $user = null) {
+        $data['Vista']=0;
         if($user){
             $user = Usuario::find($user);
-        }
-        
+        }        
         $roles = Rol::orderBy('id')->get();
-//        dd($roles);
-        return view('usuarios.usu_view')
+        return view('usuarios.usu_form')
                 ->with('roles', $roles)
-                ->with('user', $user);
+                ->with('user', $user)
+                ->with('data', $data);
     }
+    public function view(Request $req, $user = null) {
+         $data['Vista']=1;
+        if($user){
+            $user = Usuario::find($user);
+        }     
+        $roles = Rol::orderBy('id')->get();
+
+        return view('usuarios.usu_form')
+                ->with('roles', $roles)
+                ->with('user', $user)
+                ->with('data', $data);
+    }    
     
     public function save(Request $r, $user = null) {
+        $validarPWD='';
+        if($r->Password!=''){                    
+            $r->validate([
+                'Nombre'    => 'required|max:255|max:255', 
+                'Paterno'    => 'required|max:255|max:255', 
+                'Correo'    => 'required|max:255|email',
+                'RFC'    => 'required|min:13|max:13|email',
+                'Password'    => 'required|confirmed|max:255',
+                'Password_confirmation'    => 'required|max:255',
 
-        $r->validate([
-            'Nombre'    => 'required|max:255|max:255', 
-            'RFC'    => 'required|size:13', 
-            'Correo'    => 'required|max:255|email', 
-            'Password'    => 'required|max:255|confirmed', 
-        ]);
+            ]);                
+        }else{
+            $r->validate([
+                'Nombre'    => 'required|max:255|max:255', 
+                'Paterno'    => 'required|max:255|max:255', 
+                'Correo'    => 'required|max:255|email',
+                'RFC'    => 'required|min:13|max:13|email',                
+            ]);
+        }
+
+
         
+                //$user= new Usuario();
+        //$user->Nacimiento=$r->Nacimiento;
+       // $user->Nacimiento='20180101';// SimpleDate( $user->Nacimiento);    
+        //$r->replace(array('Nacimiento' => '20180101'));
+
         $user = Usuario::updateOrCreate(['id' => $user?$user:0], $r->all());
-        $user->Password = md5($r->Password);
+       // $user->Nacimiento='2018-01-01'; //SimpleDate($r->Fecha);    
+        if($r->Password){                    
+            $user->Password = md5($r->Password);
+        }
         $user->save();
         
 //        if($user)

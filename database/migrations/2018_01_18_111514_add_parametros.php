@@ -113,24 +113,6 @@ class AddParametros extends Migration {
         DB::table('parametros')->Insert(
                 array(
                     'id' => 10,
-                    'Parametro' => 'Dimensión de firma (ancho)',
-                    'Valor' => '25',
-                    'Descripcion' => 'Tamaño aproximado de la firma en el documento (mm)',
-                    'Tipo' => 'text',
-                    'Orden' => 4
-        ));
-        DB::table('parametros')->Insert(
-                array(
-                    'id' => 11,
-                    'Parametro' => 'Dimensión de firma (alto)',
-                    'Valor' => '50',
-                    'Descripcion' => 'Tamaño aproximado de la firma en el documento (mm)',
-                    'Tipo' => 'text',
-                    'Orden' => 5
-        ));
-        DB::table('parametros')->Insert(
-                array(
-                    'id' => 12,
                     'Parametro' => 'Nombre de la Dependencia',
                     'Valor' => 'Secretaría de la Transparencia y Rendición de Cuentas',
                     'Descripcion' => 'Nombre de la dependencia encargada',
@@ -139,7 +121,7 @@ class AddParametros extends Migration {
         ));
         DB::table('parametros')->Insert(
                 array(
-                    'id' => 13,
+                    'id' => 11,
                     'Parametro' => 'Título de gobierno',
                     'Valor' => 'Gobierno del Estado de Guanajuato',
                     'Descripcion' => 'Título de gobierno',
@@ -148,7 +130,7 @@ class AddParametros extends Migration {
         ));
         DB::table('parametros')->Insert(
                 array(
-                    'id' => 14,
+                    'id' => 12,
                     'Parametro' => 'Información de contacto',
                     'Valor' => 'Secretaría de la Transparencia y Rendición de Cuentas <br> Conjunto Administrativo Pozuelos s/n C.P. 36080 Guanajuato, Gto. <br> Tel. 01 (473)  735-13-64 y LADA SIN COSTO 01 (800) 506 16 16',
                     'Descripcion' => 'Datos de contacto mostrados en la parte inferior del sitio',
@@ -157,7 +139,7 @@ class AddParametros extends Migration {
         ));
         DB::table('parametros')->Insert(
                 array(
-                    'id' => 15,
+                    'id' => 13,
                     'Parametro' => 'Título del sitio',
                     'Valor' => 'Declaranet Guanajuato',
                     'Descripcion' => 'Título mostrado en la parte superior del navegador',
@@ -166,7 +148,7 @@ class AddParametros extends Migration {
         ));
         DB::table('parametros')->Insert(
                 array(
-                    'id' => 16,
+                    'id' => 14,
                     'Parametro' => 'Logo de Gobierno',
                     'Valor' => 'img/LogoGobierno.png',
                     'Descripcion' => 'Logotipo oficial de gobierno',
@@ -175,7 +157,7 @@ class AddParametros extends Migration {
         ));
         DB::table('parametros')->Insert(
                 array(
-                    'id' => 17,
+                    'id' => 15,
                     'Parametro' => 'Logo de la Dependencia',
                     'Valor' => 'img/LogoDependencia.png',
                     'Descripcion' => 'Logotipo oficial de la dependencia',

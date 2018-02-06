@@ -15,6 +15,26 @@
                 <div class="col-sm-10 col-xs-8">
                         <nav class="main-nav pull-right">
                             <ul>
+                                @if(auth()->user()->admin_id)
+                                <li class="has-child ">
+                                    <a href="#">Declaración</a>
+                                    <div class="dropdown left-indent">
+                                        <ul class="dropdown-items">
+                                            <li>
+                                                <a href="{{url('/micuenta')}}">Mi cuenta</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{url('/declaracion')}}">Declarar</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{url('/historial')}}">Historial</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{url('/prorroga')}}">Prórroga</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
                                 <li class="has-child ">
                                     <a href="#">Catálogos</a>
                                     <div class="dropdown left-indent">
@@ -27,6 +47,9 @@
                                             </li>
                                             <li>
                                                 <a href="{{url('/catalogos/fracciones')}}">Fracciones</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{url('/catalogos/contrataciones')}}">Contrataciones</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -43,6 +66,9 @@
                                             </li>
                                             <li>
                                                 <a href="{{url('/padron/recordatorios')}}">Recordatorios</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{url('/padron/prorrogas')}}">Prórrogas</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -74,7 +100,7 @@
                                                 <a href="{{url('/usuarios')}}">Usuarios</a>
                                             </li>
                                             <li>
-                                                <a href="{{url('/usuarios/roles')}}">Roles y permisos</a>
+                                                <a href="{{url('/roles')}}">Roles y permisos</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -112,7 +138,7 @@
                                         </ul>
                                     </div>
                                 </li>
-                                <li class="has-child ">
+<!--                                <li class="has-child ">
                                     <a href="#">Sistema</a>
                                     <div class="dropdown left-indent">
                                         <ul class="dropdown-items">
@@ -125,8 +151,24 @@
                                             
                                         </ul>
                                     </div>
+                                </li>-->
+                                @else
+                                <li>
+                                    <a href="{{url('/micuenta')}}">Mi cuenta</a>
                                 </li>
-
+                                <li>
+                                    <a href="{{url('/declaracion')}}">Declaración</a>
+                                </li>
+                                <li>
+                                    <a href="{{url('/historial')}}">Historial</a>
+                                </li>
+                                <li>
+                                    <a href="{{url('/prorroga')}}">Prórroga</a>
+                                </li>
+                                @endif 
+                                <li>
+                                    <a href="{{url('/login/out')}}">Salir</a>
+                                </li>
                             </ul>
                         </nav>
 
